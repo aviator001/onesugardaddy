@@ -1,27 +1,29 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <title>Terrawire Peer to Peer Video</title>
-    <meta name="description" content="Gay Sugar Daddy Gay Sugar Baby Video Chat Live" />
-    <meta name="keywords" content="Gay Sugar Daddy Gay Sugar Baby Video Chat Live" />
+    <meta name="description" content="Gay Sugar Daddy Gay Sugar Baby Video Chat Live">
+    <meta name="keywords" content="Gay Sugar Daddy Gay Sugar Baby Video Chat Live">
 
-<body style="background:url(https://gaysugardaddyfinder.com/assets/images/tv2.gif) repeat">
-<link href='css/shadows.css' rel='stylesheet' type='text/css'>
-<link href='css/bootstrap.css' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head><body style="background:url(https://gaysugardaddyfinder.com/assets/images/tv2.gif) repeat">
+<link href="css/shadows.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-<div id="videos-container"></div>
-<script src="/dist/RTCMultiConnection.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Audiowide|Bungee+Outline|Monoton" rel="stylesheet">
+<script src="https://terrawire.com:9001/dist/RTCMultiConnection.min.js"></script>
+<script src="https://terrawire.com:9001/socket.io/socket.io.js"></script>
 <script src="https://lushmatch.com/assets/js/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
- <link href="https://fonts.googleapis.com/css?family=Audiowide|Bungee+Outline|Monoton" rel="stylesheet">
+
+<div id="videos-container">
+	<video controls="" id="cu2so1ovw98" autoplay="" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover;">
+	</video>
+</div>
+
 
 <script>
 setTimeout(function(){
@@ -35,11 +37,11 @@ setTimeout(function(){
 	}
 },5000)
 
-var	mySound = new sound("1985_ring.mp3");
+var	mySound = new sound("https://gaysugardaddyfinder.com/assets/images/1985_ring.mp3");
 var connection = new RTCMultiConnection();
 var localID
 connection.autoCloseEntireSession = true;
-connection.socketURL = '/';
+connection.socketURL = 'https://terrawire.com:9001/';
 var roomid = '';
 if (localStorage.getItem('rmc-room-id')) {
     roomid = localStorage.getItem('rmc-room-id');
@@ -207,8 +209,9 @@ connection.onstreamended = connection.onleave = connection.onclose = function(ev
 			return ""; 
 		}
 	} 
-</script>
+</script><audio src="1985_ring.mp3" loop="true" preload="auto" controls="none" style="display: none;"></audio>
   <script src="https://cdn.webrtc-experiment.com/common.js"></script>
   <button onclick="javascript:history.go(-2)" style="font-family:audiowide;width:100px;position:fixed;bottom:10px;height:40px;margin:auto;left:0;right:0;z-index:99999999999999999999;opacity:1" class="btn btn-xl btn-danger">End Call</button>
-</body>
-</html>
+
+
+<div class="jconfirm jconfirm-light jconfirm-open" style="display: none;"><div class="jconfirm-bg" style="transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1);"></div><div class="jconfirm-scrollpane"><div class="jconfirm-row"><div class="jconfirm-cell"><div class="jconfirm-holder" style="padding-top: 40px; padding-bottom: 40px;"><div class="jc-bs3-container"><div class="jc-bs3-row"><div class="jconfirm-box-container jconfirm-animated jconfirm-no-transition" style="transform: translate(0px, 0px); transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1);"><div class="jconfirm-box jconfirm-hilight-shake jconfirm-type-default jconfirm-type-animated" role="dialog" aria-labelledby="jconfirm-box90023" tabindex="-1" style="width: 320px; transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1); transition-property: all, margin;"><div class="jconfirm-closeIcon" style="display: block;">×</div><div class="jconfirm-title-c" style="display: none;"><span class="jconfirm-icon-c"></span><span class="jconfirm-title"></span></div><div class="jconfirm-content-pane no-scroll" style="transition-duration: 0.4s; transition-timing-function: cubic-bezier(0.36, 0.55, 0.19, 1); height: 0px; max-height: 640.667px;"><div class="jconfirm-content" id="jconfirm-box90023"><div><img style="width:50px" src="https://lushmatch.com/assets/images/wait.gif"><span style="font-family:audiowide;color:#000;top:5px;position:absolute;"><br>Connecting, Please Wait...</span></div></div></div><div class="jconfirm-buttons" style="display: none;"></div><div class="jconfirm-clear"></div></div></div></div></div></div></div></div></div></div></body></html>
