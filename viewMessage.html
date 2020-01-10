@@ -465,7 +465,7 @@
 	function $$(ox) {
 		return document.getElementById(ox)
 	}
-
+	var attach_id
 	var to_u=qs('member_id')
 	function send_message() {
 		if ($$('mail_pad').value.trim()=='' && !uploads) return false
@@ -476,9 +476,11 @@
 		message=message.replace(/\//g,'\/')
 
 		var from_u=getCookie('mid')
-		var url = encodeURI('https://lushmatch.com/x_send_mail.php?to=' + getCookie('chatting_with') + '&from=' + from_u + '&message=' + message + '&attach_id=' + getCookie('attach_id')+'&long_code='+getCookie('long_code'))
+		attach_id=getCookie('attach_id')
+		if (attach_id=='' || attach_id==null || attach_id=='null') attach_id=='' 
+		var url = encodeURI('https://onesugardaddy.com/x_send_mail.php?to=' + getCookie('chatting_with') + '&from=' + from_u + '&message=' + message+'&notify=no&attach_id='+attach_id)
 		console.log(url)
-		wait('sending')
+		wait3('sending')
 		var request = $.ajax({
 			url: url, 
 			type: "GET",
@@ -488,6 +490,7 @@
 				hide()
 				$$('mail_pad').value=''
 				getMailX()
+				setCookie('attach_id','')
 			}
 			
 		})

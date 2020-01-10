@@ -16,6 +16,7 @@
 		<link href="https://lushmatch.com/assets/css/layout.css" rel="stylesheet" type="text/css" />		
 		<link href="https://lushmatch.com/assets/css/layout-responsive.css" rel="stylesheet" type="text/css" />		
 		<!-- orange: default style -->		
+		<link href="https://onesugardaddy.com/css/animate.css" rel="stylesheet" type="text/css" />
 		<link href="https://lushmatch.com/assets/css/shadows.css" rel="stylesheet" type="text/css" />
 		<!-- orange: default style -->		
 		<link href="css/shadows.css" rel="stylesheet" type="text/css" />
@@ -115,7 +116,18 @@
 					<div class="col-md-12" style="position:;margin:auto;left:0;right:0;margin-bottom:5px;overflow:auto;font-family:Open Sans;position:;z-index:99999999999999999999999999999999">
 						<div class="white-row"  style="box-shadow:0 0 20px #333;font-family:Open Sans;margin-top:50px;margin-bottom:50px">		
 							<div id="form_errors" class="alert alert-info" style="display:none"></div>
-							<div class="row">			
+							<div id="g1" style="display:">
+								<div class="row">			
+									<div style="width:100%" class="form-group">				
+										<div class="col-md-12" style="text-align:left;font-weight:300;font-family:Open Sans">					
+											<label>Mobile Number</label>					
+											<input type="text" name="mobile" id="mobile" value="" placeholder="Your Mobile # [Optional]" class="form-control input-box" style="color:grey;font-size:18px;font-family:Open Sans">					
+
+											<div id="mobile_err_txt" style="color: skyblue;text-align:left"></div>
+											<span style="font-size:14px!Important;color:silver">100% OPTIONAL, However we strongly recommend to be the 1st to cmeet new members and sms instantly and anonymously</span>
+										</div>
+									</div>
+								</div>
 								<div style="width:100%" class="form-group">
 									<div class="col-md-12" style="text-align:left;font-weight:300;font-style:normal;color:#333;text-shadow:none">					
 										<label class="block">Your Location</label>						
@@ -147,7 +159,29 @@
 										<div id="pswd_err_txt" style="color:skyblue;text-align:left"></div>
 									</div>
 								</div>
+							<div class="row">			
+								<div class="col-md-6">				
+									<input type="button" value="NEXT" STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans" class="btn btn-danger push-bottom" id="next_g1" onclick="next_g1()"><br>
+								</div>
 							</div>
+						</div>
+						<div id="g2" style="display:none">
+							<div class="row">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-6" style="text-align:left;font-weight:300">										
+										<label class="block">Your Gender</label>										
+										<input type="radio" name="gender" id="SB" value="SB" class="form-control" checked="checked" onclick="setGender('Sugar Baby','Sugar Daddy')">
+										<i style="margin-left:10px;font-size:32px" class="fa fa-male">
+											<span style="margin-left:10px;font-size:18px;font-family:Open Sans;" onclick="setGender('Sugar Baby','Sugar Daddy')">Sugar Baby</span>
+										</i>
+										<br>
+										<input type="radio" name="gender" id="SD" value="SD" class="form-control" onclick="setGender('Sugar Daddy','Sugar Baby')">
+										<i style="margin-left:10px;font-size:32px;color:red" class="fa fa-male">
+											<span style="margin-left:10px;font-size:18px;font-family:Open Sans;" onclick="setGender('Sugar Daddy','Sugar Baby')">Sugar Daddy</span>
+										</i>
+									</div>
+								</div>
+							</div>							
 							<div class="row">			
 								<div style="width:100%" class="form-group">				
 									<div class="col-md-12" style="text-align:left;font-weight:300">					
@@ -158,52 +192,105 @@
 								</div>
 							</div>		
 							<div class="row">			
+								<div style="width:100%" class="form-group" style="width:100%">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">What's  your Ethnicity</label>						
+										<select class="form-group" id="race">
+											<option value="">Rather Not Disclose</option>
+											<option value="white">White</option>
+											<option value="black">Black</option>
+											<option value="latin">Latin</option>
+											<option value="native_american">Native American</option>
+											<option value="east_indian">East Indian</option>
+											<option value="middle_eastern">Middle Eastern</option>
+											<option value="asian">Asian</option>
+											<option value="east_european">East European</option>
+											<option value="african">African</option>
+											<option value="pacific_islanders">Pacific Islander</option>
+											<option value="russian">Russian</option>
+											<option value="ukranian">Ukranian</option>
+										</select>
+										<div id="race_err_txt" style="color:skyblue;text-align:left"></div>
+									</div>
+								</div>
+							</div>	
+							<div class="row">			
 								<div style="width:100%" class="form-group">				
 									<div class="col-md-12" style="text-align:left;font-weight:300">					
 										<label class="block">A few words about yourself</label>						
-										<textarea id="general_info" style="font-size:15px" type="text" placeholder="Describe yourseld in a few words" class="form-control input-box" onclick="clear_error(this)" onblur="validate_field_register(this)" style="color:grey;font-size:18px"></textarea>	
+										<textarea id="general_info" style="font-size:15px;color:grey;font-size:15px;height:100px" type="text" placeholder="Describe yourself in a few words" class="form-control input-box" onclick="clear_error(this)" onblur="validate_field_register(this)"></textarea>	
 										<div id="general_info_err_txt" style="color:skyblue;text-align:left"></div>
 									</div>
 								</div>
 							</div>		
 							<div class="row">			
-								<div style="width:100%" class="form-group">				
-									<div class="col-md-6" style="text-align:left;font-weight:300">										
-										<label class="block">Your Gender</label>										
-										<input type="radio" name="gender" id="SD" value="SD" class="form-control" checked="checked" onclick="setGender('Sugar Daddy','Sugar Baby')">
-										<i style="margin-left:10px;font-size:32px;color:red" class="fa fa-male">
-											<span style="margin-left:10px;font-size:18px;font-family:Open Sans;" onclick="setGender('Sugar Daddy','Sugar Baby')">Sugar Daddy</span>
-										</i>
-										<br>
-										<input type="radio" name="gender" id="SB" value="SB" class="form-control" onclick="setGender('Sugar Baby','Sugar Daddy')">
-										<i style="margin-left:10px;font-size:32px" class="fa fa-male">
-											<span style="margin-left:10px;font-size:18px;font-family:Open Sans;" onclick="setGender('Sugar Baby','Sugar Daddy')">Sugar Baby</span>
-										</i>
-									</div>
-								</div>
-							</div>
-							<div class="row">			
-								<div style="width:100%" class="form-group">				
-									<div class="col-md-12" style="text-align:left;font-weight:300;font-family:Open Sans">					
-										<label>Mobile Number</label>					
-										<input type="text" name="mobile" id="mobile" value="" placeholder="Your Mobile # [Optional]" class="form-control input-box" style="color:grey;font-size:18px;font-family:Open Sans">					
-
-										<div id="mobile_err_txt" style="color: skyblue;text-align:left"></div>
-										<span style="font-size:14px!Important;color:silver">100% OPTIONAL, However we strongly recommend to be the 1st to cmeet new members and sms instantly and anonymously</span>
-									</div>
-								</div>
-							</div>
-														
-							<div class="row">			
 								<div class="col-md-6">				
-									<input type="submit" value="FINISH SIGNUP" STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans" class="btn btn-danger push-bottom" data-loading-text="Loading..."  onclick="validate_form()"><br>
+									<input type="button" value="NEXT" STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans" class="btn btn-danger push-bottom"  id="next_g2" onclick="next_g2()"><br>
 								</div>
 							</div>
-							<br>
-							<div class="row">			
-							</div>
-							<div style="text-align:center;margin:10px;color:silver">Issues with site? Click here or email help@sugardaddylocal.com</div>
 						</div>
+						<div class="row" id="g3" style="display:none;height:500px">			
+							<div id="sd0" class="row" style="display:none">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">What's  your Annual Income</label>						
+										<select id="income">
+											<option value="">Rather Not Disclose</option>
+											<option value="1">0 to 100K</option>
+											<option value="2">100K to 250K</option>
+											<option value="3">250K to 500K</option>
+											<option value="4">500K to 1MM</option>
+											<option value="5">1MM+</option>
+										</select>
+										<div id="income_err_txt" style="color:skyblue;text-align:left"></div>
+									</div>
+								</div>
+							</div>
+							<div id="sd1" class="row" style="display:none">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">Allowance you would be willing to give</label>						
+										<select id="allowance_sd">
+											<option value="">Rather Not Disclose</option>
+											<option value="1">Upto $1000 a Month</option>
+											<option value="2">$1000 to $2,500</option>
+											<option value="3">$2,500 to $5,000</option>
+											<option value="4">$5,000 to $10,000</option>
+											<option value="5">$10,000+</option>
+										</select>
+										<div id="income_err_txt" style="color:skyblue;text-align:left"></div>
+									</div>
+								</div>
+							</div>
+							<div id="sb0" class="row">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">Allowance you are seeking</label>						
+										<select id="allowance_sb">
+											<option value="">Rather Not Disclose</option>
+											<option value="1">Upto $1000 a Month</option>
+											<option value="2">$1000 to $2,500</option>
+											<option value="3">$2,500 to $5,000</option>
+											<option value="4">$5,000 to $10,000</option>
+											<option value="5">$10,000+</option>
+										</select>
+										<div id="income_err_txt" style="color:skyblue;text-align:left"></div>
+									</div>
+								</div>
+							</div>		
+							<div class="row">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">TAG yourself for keyword Searches</label>						
+										<iframe src="https://lushmatch.com/tags/index.html?gender=Sugar Baby"  id="tf" style="width:100%;height:150px;margin:auto;border:none;font-family:Open Sans"></iframe>
+									</div>
+								</div>
+							</div>	
+							<div class="col-md-6">				
+								<input type="submit" value="FINISH SIGNUP" STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans;position:fixed;bottom:5px;margin:auto;left:0;right:0" class="btn btn-danger push-bottom" data-loading-text="Loading..."  onclick="validate_form()"><br>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</section>
@@ -227,41 +314,135 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		<script src="https://lushmatch.com/assets/js/jquery-ui.js"></script>
-		<script type="text/javascript" src="https://sugardaddylocal.com/register.js"></script>
+		<script type="text/javascript" src="https://onesugardaddy.com/register.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	</body>
 	<script>
-		var city,state,country,zip,lat,lng,zip
-setTimeout(function(){
-		$("#location").autocomplete({
-			source: "https://lushmatch.com/x_ac_city_state_zip_country.php",
-			minLength: 1,
-			select: function( event, ui ) {
-				city=ui.item.value.split(',')[0].trim()
-				state=ui.item.value.split(',')[1].trim()
-				country=ui.item.value.split(',')[2].trim()
-				lat=ui.item.value.split(',')[3].trim()
-				lng=ui.item.value.split(',')[4].trim()
-				zip=ui.item.value.split(',')[5].trim()
-				if (city) city += ' '
-				if (state) state += ' '
-				if (zip) zip += ' '
-				setTimeout(function(){
-					setCookie('location', (city + state + zip + country).trim())
-					setCookie('city',city)
-					setCookie('state',state)
-					setCookie('zip',zip)
-					setCookie('lat',lat)
-					setCookie('lng',lng)					
-					$('#location').val(getCookie('location'))
-				},100)
+		function next_g1(){
+			setTimeout(function(){
+				$$('g1').className='animated flipOutY'
+					$$('g1').addEventListener('animationend', function() {
+						$$('g1').className=''
+						$('#g1').hide()
+						$('#g2').show()
+						$$('g2').className='animated flipInY'
+						setGender('Sugar Baby','Sugar Daddy')
+					})
+			},50)
+		}
 
-			}
-		});
+		function next_g2(){
+			setTimeout(function(){
+				$$('g2').className='animated flipOutY'
+					$$('g2').addEventListener('animationend', function() {
+						$$('g2').className=''
+						$('#g2').hide()
+						$('#g3').show()
+						$$('g3').className='animated flipInY'
+					})
+			},50)
+		}
+	function setGender(rObj1, rObj2) {
+		if (rObj1=='Sugar Daddy') {
+			document.getElementById('SD').checked=true
+			setCookie('gender','Sugar Daddy')
+			setCookie('looking_for','Sugar Baby')
+			show_daddy()
+		} else {
+			document.getElementById('SB').checked=true
+			setCookie('looking_for','Sugar Daddy')
+			setCookie('gender','Sugar Baby')
+			show_baby()
+		}
+			document.getElementById('gender').value=rObj1
+			document.getElementById('looking_for').value=rObj2
+			$$('tf').src='https://lushmatch.com/tags/index.html?gender='+rObj1
+	}
+	
+	function register_allow() {
+	}
 
-},1)
+	
+	function show_daddy() {
+		$('#sd0').show()
+		$('#sd1').show()
+		$('#sb0').hide()
+	}
 
+	function show_baby() {
+		$('#sd0').hide()
+		$('#sd1').hide()
+		$('#sb0').show()
+	}
+
+	
+	var city,state,country,zip,lat,lng,zip
+	var min_age=18
+	var max_age=80
+	var x_miles=3500
+	var x_gender='Sugar Baby'
+	var search_type,searchNameTerm
+
+
+	//Load all JS libraries
+	['https://onesugardaddy.com/custom_js/geocomplete.js','https://maps.googleapis.com/maps/api/js?key=AIzaSyDAuvU_A1iMThoe1i6Joi26nSTDQkjKlDA&libraries=places'].forEach(function(src) {
+		script = document.createElement('script');
+		script.src = src;
+		script.async = true;
+		document.head.appendChild(script);
+	});	
+	
+
+var placeSearch, autocomplete;
+var componentForm = {
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById('location')), {
+      types: ['geocode']
+    });
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+var xt='',place,lat,lng
+function fillInAddress() {
+ place = autocomplete.getPlace();
+ lat=place.geometry.location.lat()
+ lng=place.geometry.location.lng()
+ setCookie('search_data',lat+','+lng)
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      if (addressType=='route') document.getElementById('location').value  = ' ' + val
+      if (addressType=='locality') xt  += ' ' + val
+      if (addressType=='administrative_area_level_1') xt  += ' ' + val
+      if (addressType=='postal_code') document.getElementById('searchLocation').value  = val
+    }
+  }
+}
+
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+
+setTimeout('initAutocomplete()',1000)
 	function locate() {
 		$.ajax({
 			url: "https://lushmatch.com/x_location.php",
@@ -282,8 +463,18 @@ setTimeout(function(){
 			}
 		})
 	}
+	
+// This event hander will listen for messages from the child
+window.addEventListener('message', function(e) {
+	ProcessChildMessage_2(e.data); // e.data hold the message
+} , false);
+
+function ProcessChildMessage_2(message) {
+	setCookie('tags',message)
+}
+
+	
 	setTimeout("locate()",10)	
 	</script>
-	
 </html>
 				

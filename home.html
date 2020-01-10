@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,8 +7,8 @@
 		<meta name="description" content="A sugar daddy dating site that connects handsome wealthy and caring men to hot young women. Worlds first sugar daddy site to use disruptive SMS messaging. Find a Sugar Daddy today!" />		
 		<meta name="Author" content="Gautam Sharma" />		
 		<meta name="format-detection" content="telephone=no"/>
-		<title>OneSugarDaddy.com</title>
-		<link rel="canonical" href="https://OneSugarDaddy.com"
+		<title>SpoiledByMen.com</title>
+		<link rel="canonical" href="https://SpoiledByMen.com"
 		<link rel="icon" href="favicon.png">
 		<link href="https://onesugardaddy.com/assets/css/font-awesome.css" rel="stylesheet" >
 		<link href="https://onesugardaddy.com/assets/css/jquery-confirm.css" rel="stylesheet" />
@@ -19,10 +20,6 @@
 		<link href="https://onesugardaddy.com/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet"> 
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic|Open+Sans:300|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-		<script src="https://onesugardaddy.com/custom_js/base.js"></script>
-		<script src="https://onesugardaddy.com/js/jquery.js"></script>
-		<script src="js/wait.js"></script>
-		<script src="https://onesugardaddy.com/js/aes.js"></script>
 	
 	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -33,71 +30,25 @@
 		<script>
 			var wl = window.location.href;
 			var mob = (window.location.href.indexOf('file://')>=0);
-
 			function getCookie(cname)	{ 
-				var cvalue = window.localStorage.getItem(cname);
-				return cvalue
+				if (mob===true) {
+					var cvalue = window.localStorage.getItem(cname);
+					return cvalue
+				} else {
+					var name = cname + "="; 
+					var ca = document.cookie.split(';'); 
+					for(var i=0; i<ca.length; i++) { 
+					  var c = ca[i].trim(); 
+					  if (c.indexOf(name)==0) return c.substring(name.length,c.length); 
+					} 
+					return ""; 
+				}
 			} 
-
-			var currPage='home'
-			var type=1
-			var x_gender=''
-			var min_age
-			var max_age
-			var x_photos
-			var x_miles
-			var x_zip
-			var pass=new Date().toDateString()
-			var tokens=Aes.Ctr.decrypt(getCookie('tokens'),'the road to hell is paved with good intentions',256)
-			function init_parameters() {
-				wait3()
-				/**
-					Browse Types: ACTIVITY, MOST POPULAR, NEW, LOCAL, NEW_LOCAL, ONLINE_NOW
-				 	Filter By: Age, Gender, Distance, Photos
-				**/
-				if (!getCookie('x_gender')) {
-					x_gender=getCookie('gender')
-				} else {
-					x_gender=getCookie('x_gender')
-				}
-				x_photos=getCookie('x_photos')
-				x_zip=getCookie('x_zip')
-				x_miles=getCookie('x_miles')
-				max_age=getCookie('x_max_age')
-				min_age=getCookie('x_min_age')
-
-			}
-				if (!window.localStorage.getItem('x_gender')) {
-					x_gender=window.localStorage.getItem('x_gender')
-					window.localStorage.setItem('x_gender',x_gender)
-				} else {
-					x_gender=getCookie('x_gender')
-				}
-			setTimeout(function(){
-				$('#fil').show()
-				if (getCookie('currPage')) {
-					setCookie('prevPage',getCookie('currPage'))
-				}
-				setCookie('currPage',currPage)
-				setCookie('x_photos','1')
-				x_photos=getCookie('x_photos')
-				x_zip=getCookie('x_zip')
-				x_miles=getCookie('x_miles')
-				max_age=getCookie('x_max_age')
-				min_age=getCookie('x_min_age')
-				init_parameters()
-			},10)
-
-				var mega_new_local=0
-				var mega_local=0
-				var mega_new=0
-
 			if (getCookie('mid')=='') location.href='index.html?force=login'
 			setTimeout(function(){
 				delCookie('nextMID')
 			},1)
 	</script>	
-	<script src="track.js"></script>
 	</head>
 	<body style="background:#f4f4f4;">
 	<div id="notify" style="display:none;opacity:0.8;right:10px;top:100px;z-index:99999999999999;background:#333;box-shadow:0 0 20px #000;width:250px;height:40px;position:fixed;border-radius:4px">
@@ -218,10 +169,6 @@
 	margin-left:-40px;
 	width:100px;
 }
-.jconfirm-bg {
-	background:white!Important;color:black!Important;font-weight:300; font-family:Open Sans
-}
-
 </style>
 						<span style="display:none">
 							<table style="background:lightyellow;display:;height:200px;width:100%;margin:auto;left:0;right:0;margin-top:0px;font-family:Open Sans Condensed;font-size:14px!Important;text-align:center!Important">
@@ -292,11 +239,10 @@
 			<div id="tr2" style="background:#000;display:none;position:fixed;bottom:54px">
 
 			</div>	
-<div style="display:none;width:100%;margin:auto;margin-top:100px" id="ne"><img style="height:60px;display:none" src="https://onesugardaddy.com/assets/img/l4.gif"></div>
-<div style="display:none;width:100%;margin:auto;margin-top:100px;position:absolute'z-index:9999999999999999999999" id="on"><img style="height:60px;display:none" src="https://onesugardaddy.com/assets/img/l4.gif"></div>
+<div class="container"><div id="ne" class="row"  style="display:none;max-width:800px!Important;width:100%!Important;margin:auto;margin-top:100px"></div></div><img style="height:60px;display:none" src="https://onesugardaddy.com/assets/img/l4.gif">
 
 <span id="main_table"></span>
-<script src="https://sugardaddylocal.com/js/jquery.js"></script>
+<script src="js/jquery.js"></script>
 <script src="https://onesugardaddy.com/assets/js/common.js"></script>
 <script src="https://sugardaddylocal.com/js/wait.js"></script>
 <script src="https://onesugardaddy.com/assets/js/events.js"></script>
@@ -309,10 +255,17 @@
 	.genActive{background: gold;border:none;opacity:1!Important}
 </style>
  		<script>
-			
+			wait3()
+			var currPage='home'
+			if (getCookie('currPage')) {
+				setCookie('prevPage',getCookie('currPage'))
+			}
+			setCookie('currPage',currPage)
 
 			var winH, winW
-
+			function video_call() {
+				location.href='https://onesugardaddy.com/v.html?login='+getCookie('login')
+			}
 			function window_height() {
 				if (document.body) {
 				 winH = document.body.offsetHeight;
@@ -366,7 +319,7 @@
 			var max_img_width, max_img_height,hy
 
 			setTimeout(function(){
-				max_img_width=(window_width()/2)-20
+				max_img_width=(window_width()/2)-25
 				max_img_height=max_img_width
 				hy=max_img_width
 				hy=hy-140
@@ -478,6 +431,7 @@
 			var ids=''
 			var x_start=0,cStr='',url,newidth,pad,data,lx,lt
 
+
 			function getProfilesNewLocal() {
 				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
 					x_gender=getCookie('gender')
@@ -492,9 +446,7 @@
 				setCookie('type','new_local')
 				var newidth
 				newidth='100%'
-				$$('ne').style.cssText='width:'+newidth+'px!Important;;margin:auto;background:#f0f0f0!Important'
 				setCookie('view_result','gallery')
-				max_img_width=(newidth/2)-10
 				max_img_height=320
 				hy=max_img_width
 				hy=hy-100
@@ -526,203 +478,21 @@
 				for (var i=0;i<data.length;i++) {
 					hide()
 					if (data[i]) {
-						id=data[i].id
-						ids += data[i].id + ','
-						imgB=document.createElement('img')
-						imgB.src=getfile()  
-						imgB.style='width:100%;height:30%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
-						imgG=makeImgM('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
-						imgG.style='width:110px!Important;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
-						imgG.id='img_newest_'+id+'|'+x_start_new_local
-						imgG.style.position='absolute'
-						imgG.style.margin='auto'
-						imgG.style.left='0'
-						imgG.style.right='0'
-						imgG.style.marginTop='20%'
-						imgG.setAttribute('data-id',data[i].id)
-						imgG.setAttribute('data-start',mega_new_local)
-						imgG.setAttribute('data-count',no)
-						imgG.setAttribute('data-x-gender',x_gender)
-						imgG.setAttribute('data-max-age',max_age)
-						imgG.setAttribute('data-min-age',min_age)
-						imgG.setAttribute('data-x-photos',x_photos)
-						imgG.setAttribute('data-x-zip',x_zip)
-						imgG.setAttribute('data-x-miles',x_miles)
-						imgG.setAttribute('data-type','new_local')
-						var cr=''
-						var corner=document.createElement('img')
-						var dpg=document.createElement("div")
-						var cStr=document.createElement('div')
-						dpg.className=' col-md-3 col-xs-1'
-						dpg.style.margin='0px'
-						dpg.style.background='#fff'
-						dpg.style.border='none'
-						dpg.style.maxWidth=max_img_width+'px'
-						dpg.style.width =((window_width()*0.5)-10) + 'px'
-						dpg.style.height=((window_width()*0.45)+140) + 'px'
-						imgG.style.width=((window_width()*0.45)-60) + 'px'
-						imgG.style.height=((window_width()*0.45)-60) + 'px'
-						dpg.style.margin='5px'
-						dpg.style.boxShadow='1px 1px 2px #fff'
-						dpg.style.borderRadius='5px'
-						dpg.style.padding='0'
-						dpg.style.cursor='pointer'
-						dpg.style.position='relative'
-						var gi='',sub='',gx=[ ]
-						if (data[i].general_info) {
-							if (data[i].general_info.length > 50) {
-								gi=data[i].general_info.trim().substr(0,50)
-								gx=gi.split(' ')
-								sub=gi.replace(gx[gx.length-2] + ' ' + gx[gx.length-1], '')
-								gi=sub.trim() + ''
-							} else {
-								gi=data[i].general_info
-							}
-						}
-						cr+='<table style="height:160px;position:absolute;bottom:5px;margin:auto;left:0;right:0;width:100%">'
-						cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:14px;font-weight:300;font-family:Open Sans">'+data[i].login.substr(0,15).toUpperCase()+' ' + data[i].age + '<div style="font-size:14px;color:silver">' + data[i].location +'</div><div style="font-size:12px;color:orange"><b>'+data[i].distance+'</b> MILES</div></span></div></td></tr>'
-						cr+='<tr><td colspan=4><div style="margin-top:-15px;padding:5px;line-height:0.9em;font-size:18px;text-align:center;font-weight:300;font-family:Open Sans Condensed">'+gi+'...</div></td></tr>'
-						cr+='<tr><td style="text-align:center;width:20%;"><button onclick="videoCallx(\''+data[i].login+'\')" class="btn" style="margin:5px;height:35px;padding:10px;background:#f0f0f0;width:100%;margin-bottom:-10px;"><img style="width:100%;margin-top:-10px;" src="images/video_cam_black.png"></button></td><td style="width:80%;text-align:center;"><button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:90%;margin-bottom:-2px;height:35px">CONTACT</button></td><td></td>'
-						cr+='</tr></table>'
-						cStr.innerHTML=cr
-						dpg.appendChild(imgB)
-						dpg.appendChild(imgG)
-						dpg.appendChild(corner)
-						dpg.appendChild(cStr)
-						corner.outerHTML='<a onclick="shortlist('+id+')"><img src="images/corner.png" id="corner_'+id+'" style="position: absolute; top: 0px; right: 0px; width: 75px; height: 75px; z-index: 99;"></a>'
-						$$(containerID).appendChild(dpg)
-					}
-				}			
-	
-			}
-			
-
-
-			function getProfilesLocal() {
-				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
-					x_gender=getCookie('gender')
-				} else {
-					x_gender=getCookie('x_gender')
-				}
-				x_photos=getCookie('x_photos')
-				x_zip=getCookie('x_zip')
-				x_miles=getCookie('x_miles')
-				max_age=getCookie('x_max_age')
-				min_age=getCookie('x_min_age')
-				setCookie('type','local')
-				var newidth=screen.width*0.4+100
-				newidth=800
-				$$('ne').style.cssText='width:100%!Important;;margin:auto;background:#f0f0f0!Important'
-				setCookie('view_result','gallery')
-				max_img_width=newidth/4-10
-				max_img_height=320
-				hy=max_img_width
-				hy=hy-100
-				no=20
-				var x_start=0,cStr=''
-				var url = 'https://sugardaddylocal.com/x_browse_local.php?start='+mega_local+'&count='+no+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=local'
-				console.log(url)
-				var request = $.ajax({
-					url: url,
-					type: "GET",
-					dataType: "html", 
-					cache: false,
-					success: function(msg) {
-						var data=JSON.parse(msg)
-						render(data,'ne')
-						mega_local=mega_local+no
-						setTimeout('update_shortlist()',10)
-						setTimeout('update_browse_local_logs()',10)
-					}
-				})				
-			}
-
-			function getProfilesNew() {
-				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
-					x_gender=getCookie('gender')
-				} else {
-					x_gender=getCookie('x_gender')
-				}
-				x_photos=getCookie('x_photos')
-				x_zip=getCookie('x_zip')
-				x_miles=getCookie('x_miles')
-				max_age=getCookie('x_max_age')
-				min_age=getCookie('x_min_age')
-				setCookie('type','new')
-				var newidth='100%'
-				$$('ne').style.cssText='width:'+newidth+'!Important;;margin:auto;background:#f0f0f0!Important'
-				setCookie('view_result','gallery')
-				max_img_width=(newidth/2)-10
-				max_img_height=320
-				hy=max_img_width
-				hy=hy-100
-				no=20
-				var x_start=0,cStr=''
-				var url = 'https://sugardaddylocal.com/x_browse_new.php?start='+mega_new+'&count='+no+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new'
-				console.log(url)
-				var request = $.ajax({
-					url: url,
-					type: "GET",
-					dataType: "html", 
-					cache: false,
-					success: function(msg) {
-						var data=JSON.parse(msg)
-						render(data,'ne')
-						mega_new=mega_new+no
-						setTimeout('update_shortlist()',10)
-						setTimeout('update_browse_new_logs()',10)
-					}
-				})				
-			}
-
-			function getProfilesOnline(data) {
-				$('#ne').hide()
-				$('#on').show()
-				$('#on').html('')
-				str=''
-				for (var i=0; i<data.length; i++) {
-					str += data[i] + ','
-				}
-				
-				var newidth
-				newidth='100%'
-				$$('ne').style.cssText='width:'+newidth+'px!Important;;margin:auto;background:#f0f0f0!Important;'
-				$$('on').style.paddingTop='40px'
-				$$('on').style.margin='10px'
-				$$('on').style.background='#fcfcfc'
-				setCookie('view_result','gallery')
-				max_img_width=(newidth/2)-10
-				max_img_height=320
-				hy=max_img_width
-				hy=hy-100
-				no=20
-				var x_start=0,cStr=''
-				var url = 'https://sugardaddylocal.com/x_whos_online.php?users='+str
-				console.log(url)
-				var request = $.ajax({
-					url: url,
-					type: "GET",
-					dataType: "html", 
-					cache: false,
-					success: function(msg) {
-						var data=JSON.parse(msg)
-						var pad=document.createElement("div")
-						data.reverse()
-						var lx=data.length
-						var lt=-700
-						for (var i=0;i<data.length;i++) {
-							hide()
-							if (data[i]) {
 								id=data[i].id
 								ids += data[i].id + ','
+								id=data[i].id
+								ids += data[i].id + ','
+								imgB=document.createElement('img')
+								imgB.src=getfile()  
+								imgB.style='width:100%;height:30%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
 								imgG=makeImgM('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
-								imgG.style='width:50px!Important;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
+								imgG.style='height:110px;width:110px!Important;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
 								imgG.id='img_newest_'+id+'|'+x_start_new_local
 								imgG.style.position='absolute'
 								imgG.style.margin='auto'
 								imgG.style.left='0'
 								imgG.style.right='0'
-								imgG.style.marginTop='10px'
+								imgG.style.marginTop='20%'
 								imgG.setAttribute('data-id',data[i].id)
 								imgG.setAttribute('data-start',mega_new_local)
 								imgG.setAttribute('data-count',no)
@@ -737,37 +507,121 @@
 								var corner=document.createElement('img')
 								var dpg=document.createElement("div")
 								var cStr=document.createElement('div')
-								dpg.className=' col-xs-2'
-								dpg.style.margin='0px'
+								dpg.className=' col-md-1 col-xs-3'
+								dpg.style.margin='5px'
 								dpg.style.background='#fff'
 								dpg.style.border='none'
-								dpg.style.maxWidth=max_img_width+'px'
-								dpg.style.width =((window_width()*0.3)) + 'px'
-								dpg.style.height=((window_width()*0.3)+30) + 'px'
-								dpg.style.margin='5px'
-								dpg.style.boxShadow='1px 1px 2px #fff'
+								//dpg.style.boxShadow='0px 0px 20px #fff!Important'
+								//dpg.style.maxWidth=max_img_width +'px'
+								dpg.style.width =  max_img_width + 'px'
+								dpg.style.height =  max_img_height + 'px'
+								dpg.style.boxShadow='0px 1px 10px rgba(0,0,0,0.3)'
 								dpg.style.borderRadius='5px'
-								dpg.style.padding='0px'
+								dpg.style.padding='0'
 								dpg.style.cursor='pointer'
 								dpg.style.position='relative'
 								var gi='',sub='',gx=[ ]
-								cr+='<div style="text-align:center;width:100%;color:#000;font-size:16px;position:absolute;bottom:30px;font-weight:300!Important;font-family:Open Sans;">'+data[i].login.substr(0,15).toUpperCase()+' ' + data[i].age + '<br>' + data[i].location +  '</div>'
-								cr+='<button onclick="send_mail('+id+')" class="btn" style="bottom:0px;background:turquoise;width:100%;font-size:0.9em;position:absolute">CONTACT</button>'
+								if (data[i].general_info) {
+									if (data[i].general_info.length > 50) {
+										gi=data[i].general_info.trim().substr(0,50)
+										gx=gi.split(' ')
+										sub=gi.replace(gx[gx.length-2] + ' ' + gx[gx.length-1], '')
+										gi=sub.trim() + ''
+									} else {
+										gi=data[i].general_info
+									}
+								}
+								cr+='<table style="position:absolute;bottom:10px;margin:auto;left:0;right:0;width:100%">'
+								cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:16px">'+data[i].login.substr(0,15).toUpperCase()+' ' + data[i].age + '<div style="font-size:14px;color:silver">' + data[i].location +'</div><div style="font-size:12px;color:orange"><b>'+data[i].distance+'</b> MILES</div></span></div></td></tr>'
+								cr+='<tr><td colspan=4><div style="margin-top:-10px;padding:5px;line-height:0.9em;font-size:14px;text-align:center">'+gi+'</div><button style="position:absolute;left:0;right:0;padding:2px;font-size:10px;margin-top:5px;margin:auto;width:40px" class="btn btn-xx" style="">MORE</button></td></tr>'
+								cr+='<tr><td style="text-align:center;width:100%;padding:5px;padding-top:10px"><button onclick="videoCall(\''+data[i].login+'\')" class="btn" style="padding:5px;background:orange;width:20%;margin-bottom:-10px"><img style="width:60px" src="images/video_cam_black.png"></button> <button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:75%;margin-bottom:-10px">CONTACT</button></td>'
+								cr+='</tr></table>'
 								cStr.innerHTML=cr
-								//dpg.appendChild(imgB)
+								dpg.appendChild(imgB)
 								dpg.appendChild(imgG)
 								dpg.appendChild(corner)
 								dpg.appendChild(cStr)
-								$$('on').appendChild(dpg)
-							}
-						}
-						//setTimeout('update_shortlist()',10)
+								corner.outerHTML='<a onclick="shortlist('+id+')"><img src="images/corner.png" id="corner_'+id+'" style="position: absolute; top: 0px; right: 0px; width: 75px; height: 75px; z-index: 99;"></a>'
+								$$(containerID).appendChild(dpg)
 					}
-				})						
-				
-				
+				}			
+	
 			}
 			
+			function getProfilesLocal() {
+				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
+					x_gender=getCookie('gender')
+				} else {
+					x_gender=getCookie('x_gender')
+				}
+				x_photos=getCookie('x_photos')
+				x_zip=getCookie('x_zip')
+				x_miles=getCookie('x_miles')
+				max_age=getCookie('x_max_age')
+				min_age=getCookie('x_min_age')
+				setCookie('type','new_local')
+				var newidth
+				newidth='100%'
+				setCookie('view_result','gallery')
+				max_img_height=320
+				hy=max_img_width
+				hy=hy-100
+				no=20
+				
+				var url = 'https://sugardaddylocal.com/x_browse_local.php?start='+mega+'&type=local&count='+no+'&gender='+getCookie('gender')
+				console.log(url)
+				var request = $.ajax({
+					url: url,
+					type: "GET",
+					dataType: "html", 
+					cache: false,
+					success: function(msg) {
+						var data=JSON.parse(msg)
+						render(data,'ne')
+						mega_local=mega_local+no
+						setTimeout('update_shortlist()',10)
+						setTimeout('update_browse_new_local_logs()',10)
+					}
+				})				
+			}
+		
+		function getProfilesNew() {
+				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
+					x_gender=getCookie('gender')
+				} else {
+					x_gender=getCookie('x_gender')
+				}
+				x_photos=getCookie('x_photos')
+				x_zip=getCookie('x_zip')
+				x_miles=getCookie('x_miles')
+				max_age=getCookie('x_max_age')
+				min_age=getCookie('x_min_age')
+				setCookie('type','new_local')
+				var newidth
+				newidth='100%'
+				setCookie('view_result','gallery')
+				max_img_height=320
+				hy=max_img_width
+				hy=hy-100
+				no=20
+				var url = 'https://sugardaddylocal.com/x_browse_new.php?start='+mega+'&type=new&count='+no+'&gender='+getCookie('gender')
+				console.log(url)
+				var request = $.ajax({
+					url: url,
+					type: "GET",
+					dataType: "html", 
+					cache: false,
+					success: function(msg) {
+						var data=JSON.parse(msg)
+						render(data,'ne')
+						mega_local=mega_local+no
+						setTimeout('update_shortlist()',10)
+						setTimeout('update_browse_new_local_logs()',10)
+					}
+				})				
+			}
+		
+
 			function getProfilesNewLocal_list() {
 				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
 					x_gender=getCookie('gender')
@@ -808,7 +662,7 @@
 								imgB=document.createElement('img')
 								imgB.src=getfile()  
 								imgB.style='width:100%;height:40%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
-								imgG=makeImg('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
+								imgG=makeImg('https://onesugardaddy.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
 								imgG.style='width:60%;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
 								imgG.id='img_newest_'+id+'|'+x_start_new_local
 								imgG.style.position='absolute'
@@ -847,9 +701,9 @@
 								dpg.style.padding='0'
 								dpg.style.cursor='pointer'
 								dpg.style.position='relative'
-								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://lushmatch.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
+								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://onesugardaddy.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
 								cr+='<td style="width:40%"><table style="width:100%;background:;"><tr><td style="text-align:left;width:100%;padding:2px;color:#000;font-size:14px;font-family:Open Sans;font-weight:"><b><strong>'+ data[i].login.toUpperCase() + '</b><br>' + data[i].gender + ', ' + data[i].age + '<br>' + data[i].location+'</td></tr></table></td>'
-								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCallx(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
+								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCall(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
 								cr+='</tr></table>'
 								cStr.innerHTML=cr
 								dpg.appendChild(cStr)
@@ -908,7 +762,7 @@
 								imgB=document.createElement('img')
 								imgB.src=getfile()  
 								imgB.style='width:100%;height:40%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
-								imgG=makeImg('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
+								imgG=makeImg('https://onesugardaddy.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
 								imgG.style='width:60%;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
 								imgG.id='img_local_'+id+'|'+mega_local
 								imgG.style.position='absolute'
@@ -942,9 +796,9 @@
 								dpg.style.padding='0'
 								dpg.style.cursor='pointer'
 								dpg.style.position='relative'
-								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://lushmatch.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
+								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://onesugardaddy.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
 								cr+='<td style="width:40%"><table style="width:100%;background:;"><tr><td style="text-align:left;width:100%;padding:2px;color:#000;font-size:14px;font-family:Open Sans;font-weight:"><b><strong>'+ data[i].login.toUpperCase() + '</b><br>' + data[i].gender + ', ' + data[i].age + '<br>' + data[i].location+'</td></tr></table></td>'
-								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCallx(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
+								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCall(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
 								cr+='</tr></table>'
 								cStr.innerHTML=cr
 								dpg.appendChild(cStr)
@@ -1005,8 +859,8 @@
 								imgB=document.createElement('img')
 								imgB.src=getfile()  
 								imgB.style='width:100%;height:40%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
-								imgG=makeImg('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
-								imgG.style='min-width:130px!Important;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
+								imgG=makeImg('https://onesugardaddy.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
+								imgG.style='width:60%;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
 								imgG.id='img_new_'+id+'|'+mega_new
 								imgG.style.position='absolute'
 								imgG.style.left='0'
@@ -1034,12 +888,14 @@
 								dpg.style.maxWidth='100%'
 								dpg.style.width ='100%'
 								dpg.style.height='65px'
+								imgG.style.width='30px'
+								imgG.style.height='30px'
 								dpg.style.padding='0'
 								dpg.style.cursor='pointer'
 								dpg.style.position='relative'
-								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://lushmatch.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
+								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://onesugardaddy.com/sb/'+data[i].filename_1+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
 								cr+='<td style="width:40%"><table style="width:100%;background:;"><tr><td style="text-align:left;width:100%;padding:2px;color:#000;font-size:14px;font-family:Open Sans;font-weight:"><b><strong>'+ data[i].login.toUpperCase() + '</b><br>' + data[i].gender + ', ' + data[i].age + '<br>' + data[i].location+'</td></tr></table></td>'
-								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCallx(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
+								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videoCall(\''+data[i].login+'\')" src="images/video_cam_black.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
 								cr+='</tr></table>'
 								cStr.innerHTML=cr
 								dpg.appendChild(cStr)
@@ -1052,9 +908,6 @@
 					}
 				})				
 			}
-	function buy_rose() {
-		location.href='checkout.html?item=Long Stemmed Red Rose&qty=1&price=2&type=product'
-	}
 
 			function view_offers(id) {
 				$.alert('Coming Soon')
@@ -1071,8 +924,94 @@
 				return ii
 			}
 			var mega=0
+			function getProfilesNewLocal_list() {
+				setCookie('view_result','list')
+				$$('img_list').src='images/list_selected.png'
+				$$('img_gallery').src='img/view_gallery.png'
+				$$('img_list').style.width='30px'				
+				$$('img_gallery').style.width='20px'
+				max_img_width=(window_width()/2)
+				max_img_height=max_img_width
+				hy=max_img_width
+				hy=hy-100
+				no=(screen.height/max_img_height)*2
+				no=20
+				var x_start=0,cStr=''
+				var url = 'https://sugardaddylocal.com/x_browse_new_local.php?start='+mega+'&gender='+getCookie('gender')+'&type=new_local&count='+no
+				var request = $.ajax({
+					url: url,
+					type: "GET",
+					dataType: "html", 
+					cache: false,
+					success: function(msg) {
+						hide()
+						var pad=document.createElement("div")
+						var data=JSON.parse(msg)
+						data.reverse()
+						var lx=data.length
+						var lt=-700
+						for (var i=0;i<data.length;i++) {
+							hide()
+							if (data[i]) {
+								var fimg=!data[i].filename_1 ? 'no_photo.png' : data[i].filename_1
+								id=data[i].id
+								ids += data[i].id + ','
+								imgB=document.createElement('img')
+								imgB.src=getfile()  
+								imgB.style='width:100%;height:40%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
+								imgG=makeImg('https://lushmatch.com/sb/'+fimg, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
+								imgG.style='width:60%;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
+								imgG.id='img_newest_'+id+'|'+x_start_new_local
+								imgG.style.position='absolute'
+								imgG.style.left='0'
+								imgG.style.right='0'
+								imgG.style.margin='20px'
+								var cr=''
+								var corner=document.createElement('img')
+								var dpg=document.createElement("div")
+								var cStr=document.createElement('div')
+								dpg.className='col-md-12  team-card-style-5'
+								dpg.style.margin='0px'
+								dpg.style.background='#fff'
+								dpg.style.border='none'
+								dpg.id='tr_'+data[i].id
+								if (getCookie('isMobile')) {
+									dpg.style.maxWidth='800px'
+									dpg.style.width ='800px'
+									dpg.style.height='65px'
+									imgG.style.width='30px'
+									imgG.style.height='30px'
+								} else {
+									dpg.style.maxWidth='800px'
+									dpg.style.width ='800px'
+									dpg.style.height='65px'
+									imgG.style.width='30px'
+									imgG.style.height='30px'								}
+								dpg.style.padding='0'
+								dpg.style.cursor='pointer'
+								dpg.style.position='relative'
+								dpg.className='www_box'
+								cr+='<table style="width:100%;border-bottom:1px solid skyblue"><tr><td style="width:20%;text-align:center"><img src="https://lushmatch.com/sb/'+fimg+'" style="border-radius:45px;max-height:45px;width:45px;border:5px solid #f0f0f0"></td>'
+								cr+='<td style="width:40%"><table style="width:100%;background:;"><tr><td style="text-align:left;width:100%;padding:2px;color:#000;font-size:14px;font-family:Open Sans;font-weight:"><b>'+ data[i].login + '</b></b><br>' + data[i].gender + ', ' + data[i].age + '<br>' + data[i].location+'</td></tr></table></td>'
+								cr+='<td style="width:40%"><table><tr><td><img onclick="send_mail('+id+')" src="images/bubble23.png" style="width:20px;margin:5px;margin-right:10px"></td><td><img onclick="videocall(\''+data[i].login+'\')" src="images/video_cam.png" style="width:20px;margin:5px"></td><td><a href="member_wishlist.html?mid='+data[i].id+'"><img src="img/gift.png" style="width:20px;margin-left:10px;margin-right:5px;"></a></td><td><img src="images/addw.png" onclick="shortlist('+id+')" style="width:20px;margin:5px;margin-left:10px;margin-right:10px"></td></tr></table></td>'
+								cr+='</tr></table>'
+								cStr.innerHTML=cr
+								dpg.appendChild(cStr)
+								$$('ne').appendChild(dpg)
+							}
+						}
+						mega=mega+10
+						setTimeout('update_shortlist()',10)
+						setTimeout('update_browse_logs()',10)
+					}
+				})					
+			}			
+
+			function getProfilesOnline(data) {
 			
-			var slist=[ ]
+				
+				
+			}			var slist=[ ]
 			function update_shortlist(id) {
 				if (getCookie('shortlist')) {
 					slist=JSON.parse(getCookie('shortlist'))
@@ -1145,6 +1084,8 @@
 				ctr++
 				img.onerror = fixM
 				pg=alt.split(' ')[0]+' '+alt.split(' ')[1]
+				img.style.width='200px!Important'
+				img.style.height='200px!Important'
 				return img;
 			}
 	
@@ -1154,31 +1095,34 @@
 				if ( alt != null ) img.alt = alt;
 				if ( title != null ) img.title = title;
 				if ( className != null ) img.className = className;
+				img.style.width='200px'
 				ctr++
 				img.onerror = fix
+				img.style.width='200px!Important'
+				img.style.height='200px!Important'
 				pg=alt.split(' ')[0]+' '+alt.split(' ')[1]
 				return img;
 			}
 	
 			function fix(e) {
 				if (pg=='Sugar Baby') 
-					e.target.src='https://onesugardaddy.com/images/no_photo_f.png'
+					e.target.src='https://onesugardaddy.com/sb/no_photo_f.png'
 				else
-					e.target.src='https://onesugardaddy.com/images/no_photo_m.png'
-				e.target.style.width='130px'
-				e.target.style.height='130px'
+					e.target.src='https://onesugardaddy.com/sb/no_photo_m.png'
+				e.target.style.width='200px'
+				e.target.style.height='200px'
 				e.target.style.borderRadius='200px'
 				e.target.style.border='none'
 			}
 
 			function fixM(e) {
 				if (pg=='Sugar Baby') 
-					e.target.src='https://onesugardaddy.com/images/no_photo_f.png'
+					e.target.src='https://onesugardaddy.com/sb/no_photo_f.png'
 				else
-					e.target.src='https://onesugardaddy.com/images/no_photo_m.png'
+					e.target.src='https://onesugardaddy.com/sb/no_photo_m.png'
 				e.target.style.width='130px'
 				e.target.style.height='130px'
-				e.target.style.borderRadius='130px'
+				e.target.style.borderRadius='100px'
 				e.target.style.border='none'
 			}
 			var tmr	
@@ -1209,7 +1153,7 @@
 				   },100)
 			   }
 			});
-				
+	
 	function send_mail(id) {
 		setCookie('chatting_with',id)
 		location.href='sendMail.html?to_member_id='+id
@@ -1223,7 +1167,6 @@
 		currMID=pid
 		location.href='viewAlbum.html?member_id='+pid
 	}
-
 
 	function update_browse_new_local_logs() {
 		type=1
@@ -1358,11 +1301,9 @@
 				$$('btn1').style.background='white'
 				$$('btn2').style.background='white'
 				$$('btn3').style.background='white'
-				$$('btn4').style.background='white'
 				$$('btn1').style.border='1px solid silver'
 				$$('btn2').style.border='1px solid silver'
 				$$('btn3').style.border='1px solid silver'
-				$$('btn4').style.border='1px solid silver'
 				$$('btn'+x).style.background='#45F8BD'
 				$$('btn'+x).style.border='none'
 				$$('ne').innerHTML=''
@@ -1424,7 +1365,6 @@
 	},1000)
 </script>
 
-<script src="https://onesugardaddy.com/mobile/custom_menu_updated.js"></script>
+<script src="https://m.onesugardaddy.com/custom_menu_updated.js"></script>
 <script src="https://onesugardaddy.com/jsSocketNode.js"></script>
-<script src="track.js"></script>
 </html>

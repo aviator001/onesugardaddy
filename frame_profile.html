@@ -191,36 +191,45 @@ font-weight:bold
 }
     </style>
 		<script src="https://lushmatch.com/assets/js/jquery.js"></script>
-		        <div class="col-lg-8 pb-5">
-            <form class="row">
+		<DIV id="notify" style="position:fixed;width:100%;left:0;top:0;height:40px;z-index:99999999;background:#a3d900;display:none"><div id="notify_txt"></div></DIV>
+        <div class="col-lg-8 pb-5">
+						<form class="row">
 				
-								<div style="margin-top:50px" class="col-md-6">
+								<div style="margin-top:50px;display:none" class="col-md-6">
 									<div class="form-group">
 										<label for="account-fn">First Name</label>
 										<input class="form-control" type="text" id="name" value="" required="">
 									</div>
 								</div>
-								<div class="col-md-6"><div class="form-group">					
-									<label for="account-fn">Mobile Number</label>					
-									<input class="form-control" type="text" style="width:100%;height:40px;font-size:16px!Important" id="mobile"  onchange="update(this)">
-								</div>	
-								</div><div class="col-md-6"><div class="form-group">					
-									<label for="account-fn">Login</label>					
-									<input class="form-control" disabled type="text" style=";height:40px;font-size:16px!Important" id="login">
-								</div>	
-								
-								</div><div class="col-md-6"><div class="form-group">					
-									<label for="account-fn">Email</label>						
-									<input class="form-control"type="text" style=";height:40px;font-size:16px!Important" id="email">
+								<div class="col-md-6">
+									<div class="form-group">					
+										<label for="account-fn">Mobile Number</label>					
+										<input class="form-control" type="text" style="width:100%;height:40px;font-size:16px!Important" id="mobile"  onchange="update(this)">
+									</div>	
 								</div>
 								
-								</div><div class="col-md-6"><div class="form-group">					
-									<label for="account-fn">I am a </label>					
-									<select class="form-control" type="select" id="gender" style="height:40px;font-size:16px!Important" onchange="update(this);setGender(this.value)">
-										<option name="Sugar Daddy">Sugar Daddy</option>
-										<option name="Sugar Baby">Sugar Baby</option>
-									</select>
-									<input type="hidden" name="looking_for" id="looking_for">
+								<div class="col-md-6">
+									<div class="form-group">					
+										<label for="account-fn">Login</label>					
+										<input class="form-control" disabled type="text" style=";height:40px;font-size:16px!Important" id="login">
+									</div>	
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">					
+										<label for="account-fn">Email</label>						
+										<input class="form-control"type="text" style=";height:40px;font-size:16px!Important" id="email">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">					
+										<label for="account-fn">I am a </label>					
+										<select class="form-control" type="select" id="gender" style="height:40px;font-size:16px!Important" onchange="update(this);setGender(this.value)">
+											<option name="Sugar Daddy">Sugar Daddy</option>
+											<option name="Sugar Baby">Sugar Baby</option>
+										</select>
+										<input type="hidden" name="looking_for" id="looking_for">
+									</div>
 								</div>
 								<!--  -->
 								<!-- </div><div class="col-md-6"><div class="form-group">					 -->
@@ -231,18 +240,93 @@ font-weight:bold
 									<!-- </select>								 -->
 								<!-- </div> -->
 								
-								</div><div class="col-md-6"><div class="form-group">					
+								<div class="col-md-6"><div class="form-group">					
 									<label for="account-fn">Password</label>				
-									<input class="form-control" type="text" style=";height:40px;font-size:16px!Important" id="pswd">								
+									<input class="form-control" type="text" style=";height:40px;font-size:16px!Important" id="pswd" onchange="update(this)";>								
 								</div>				
-								
-								</div><div class="col-md-6"><div class="form-group">					
-									<label for="account-fn">Age</label>
-									<input class="form-control" type="text" style=";height:40px;font-size:16px!Important" id="age">						
 								</div>
 								
+								
+								<div class="col-md-6">
+									<div class="form-group">					
+										<label for="account-fn">Age</label>
+										<input class="form-control" type="text" style=";height:40px;font-size:16px!Important" id="age" onchange="update(this)";>						
+									</div>
+								</div>	
+								<div class="col-md-6">
+									<div class="form-group">	
+										<label class="block">What are you</label>						
+										<select class="form-control" id="race" style="height:40px;font-size:16px!Important" onchange="pupdate(this)";>
+											<option name="">Rather Not Disclose</option>
+											<option name="white">White</option>
+											<option name="black">Black</option>
+											<option name="latin">Latin</option>
+											<option name="native_american">Native American</option>
+											<option name="east_indian">East Indian</option>
+											<option name="middle_eastern">Middle Eastern</option>
+											<option name="asian">Asian</option>
+											<option name="east_european">East European</option>
+											<option name="african">African</option>
+											<option name="pacific_islanders">Pacific Islander</option>
+											<option name="russian">Russian</option>
+											<option name="ukranian">Ukranian</option>
+										</select>
+									</div>
 								</div>
-<div class="col-md-6"><div class="form-group">					
+
+								<div class="col-md-6">
+									<div class="form-group">	
+										<label class="block">What's  your Annual Income</label>						
+										<select class="form-control" id="income" style="height:40px;font-size:16px!Important" onchange="pupdate(this)";>
+											<option value="">Rather Not Disclose</option>
+											<option value="0 to 100K">0 to 100K</option>
+											<option value="100K to 250K">100K to 250K</option>
+											<option value="250K to 500K">250K to 500K</option>
+											<option value="500K to 1MM">500K to 1MM</option>
+											<option value="1MM Plus">1MM Plus</option>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">	
+										<label id="lab1" class="block">Allowance you are willing to give</label>						
+										<select class="form-control" id="allowance_sd" style="height:40px;font-size:16px!Important" onchange="pupdate(this)";>
+											<option value="">Rather Not Disclose</option>
+											<option value="1">Upto $1000 a Month</option>
+											<option value="2">$1000 to $2,500</option>
+											<option value="3">$2,500 to $5,000</option>
+											<option value="4">$5,000 to $10,000</option>
+											<option value="5">$10,000+</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">	
+										<label id="lab2" class="block">Allowance that you are seeking</label>						
+										<select class="form-control" id="allowance_sb" style="height:40px;font-size:16px!Important" onchange="pupdate(this)";>
+											<option value="">Rather Not Disclose</option>
+											<option value="1">Upto $1000 a Month</option>
+											<option value="2">$1000 to $2,500</option>
+											<option value="3">$2,500 to $5,000</option>
+											<option value="4">$5,000 to $10,000</option>
+											<option value="5">$10,000+</option>
+										</select>
+									</div>
+								</div>
+
+							<div class="row">			
+								<div style="width:100%" class="form-group">				
+									<div class="col-md-12" style="text-align:left;font-weight:300">					
+										<label class="block">TAG yourself for keyword Searches</label>						
+										<iframe src="" id="tf" style="width:100%;height:150px;margin:auto;border:none;font-family:Open Sans"></iframe>
+									</div>
+								</div>
+							</div>									
+								</div>
+								<div class="col-md-6"><div class="form-group">					
 									<label for="account-fn">Your Location</label>
 									<input class="form-control"type="text" id="location" style=";height:40px;font-size:16px!Important" onclick="loc()">						
 								</div>								
@@ -336,6 +420,7 @@ font-weight:bold
 			function $$(id) {
 				return document.getElementById(id)
 			}
+			
 			function qs(name, url) {
 				if (!url) {
 				  url = window.location.href;
@@ -393,7 +478,8 @@ font-weight:bold
 				}	
 			}
 	function dinit() {
-		var url = 'https://lushmatch.com/x_get_user_info.php?member_id=' + getCookie('mid')
+		$$('tf').src='https://lushmatch.com/tags/index.html?gender='+ getCookie('gender')
+		var url = 'https://onesugardaddy.com/x_get_user_info.php?member_id=' + getCookie('mid')
 		console.log(url)
 		var request = $.ajax({
 				url: url,
@@ -401,25 +487,39 @@ font-weight:bold
 				dataType: "html", 
 				cache: false,
 				success: function(msg) {
-					console.log(msg)
 					msg=JSON.parse(msg)
+					if (msg.gender=='Sugar Daddy') {
+						document.getElementById('allowance_sd').style.display='block'
+						document.getElementById('allowance_sb').style.display='none'
+						document.getElementById('allowance_sd').value=msg.allowance_sd
+						$('#lab1').show()
+						$('#lab2').hide()
+					} else {
+						document.getElementById('allowance_sd').style.display='none'
+						document.getElementById('allowance_sb').style.display='block'
+						document.getElementById('allowance_sb').value=msg.allowance_sb
+						$('#lab2').show()
+						$('#lab1').hide()
+					}
+					document.getElementById('income').value=msg.income
+					document.getElementById('race').value=msg.race
 					document.getElementById('mobile').value=msg.mobile
-					document.getElementById('name').value=msg.name
 					document.getElementById('email').value=msg.email
 					document.getElementById('login').value=msg.login
 					document.getElementById('gender').value=msg.gender
+					var gender=msg.gender
 					document.getElementById('looking_for').value=msg.looking_for
 					document.getElementById('age').value=msg.age
 					document.getElementById('general_info').value=msg.general_info
 					document.getElementById('location').value=msg.location
-					window.top.document.getElementById('full_name').innerHTML=msg.login
-					window.top.document.getElementById('joined').innerHTML=msg.xReg_Date
-					window.top.document.getElementById('user_photo').src='https://lushmatch.com/sb/'+msg.filename_1
-					window.top.document.getElementById('user_photo').style.width='100px'
-					window.top.document.getElementById('user_photo').style.height='100px'
-					window.top.document.getElementById('user_photo').style.borderRadius='150px'
-					window.top.document.getElementById('user_photo').style.marginTop='-25px'
-					window.top.document.getElementById('user_photo').style.border='10px solid white'
+					if (window.top.document.getElementById('user_photo')) {
+						window.top.document.getElementById('user_photo').src='https://lushmatch.com/sb/'+msg.filename_1
+						window.top.document.getElementById('user_photo').style.width='100px'
+						window.top.document.getElementById('user_photo').style.height='100px'
+						window.top.document.getElementById('user_photo').style.borderRadius='150px'
+						window.top.document.getElementById('user_photo').style.marginTop='-25px'
+						window.top.document.getElementById('user_photo').style.border='10px solid white'
+					}
 					var pswd=msg.pswd
 					document.getElementById('pswd').value=pswd
 					setCookie('gender',msg.gender)
@@ -427,6 +527,7 @@ font-weight:bold
 				}
 			})			
 	}
+	
 	function setGender(gen) {
 		var looking_for=document.createElement('div')
 		looking_for.id='looking_for'
@@ -442,6 +543,33 @@ font-weight:bold
 		update(looking_for)
 	}
 	
+	function pupdate(o) {
+	console.log(typeof(o))
+		if (typeof(o)==='object') {
+		var v=o.value
+		var f=o.id
+		} else {
+			var v=o
+			var f='tags'
+		}
+		var t = 'dt_profile'
+		var url = 'https://onesugardaddy.com/x_update_profile.php?table=' + t + '&field=' + f + '&value=' + v + '&mid=' + getCookie('mid')
+		console.log(url)
+		var request = $.ajax({
+				url: url,
+				type: "GET",
+				dataType: "html",
+				cache: false,
+				success: function(msg) {
+					if (!msg) {
+						if (o.id !== 'gender') {
+							ntfy('Done. Update completed.')
+						}
+					} else {
+					}
+				}
+			})			
+	}	
 	function update(o) {
 		var v=o.value
 		var f=o.id
@@ -456,83 +584,14 @@ font-weight:bold
 				success: function(msg) {
 					if (!msg) {
 						if (o.id !== 'gender') {
-							$.alert('Done. Update completed.')
+							ntfy('Done. Update completed.')
 						}
 					} else {
 					}
 				}
 			})			
 	}
-	setTimeout('dinit()',2000)
 
-var test_mode=false
-// Create a Stripe client.
-if (test_mode===true) {
-	var stripe = Stripe('pk_test_qtprDcPj4ouEvG9O2CaP7EJV');
-} else {
-	var stripe = Stripe('pk_live_usFpglAicQ086PYo5g0n4Jiz');
-}
-
-// Create an instance of Elements.
-var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
-var style = {
-  base: {
-    color: '#32325d',
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': {
-      color: '#aab7c4'
-    }
-  },
-  invalid: {
-    color: '#fa755a',
-    iconColor: '#fa755a'
-  }
-};
-
-// Create an instance of the card Element.
-var card = elements.create('card', {style: style});
-
-// Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
-
-// Handle real-time validation errors from the card Element.
-card.addEventListener('change', function(event) {
-  var displayError = document.getElementById('card-errors');
-  if (event.error) {
-    displayError.textContent = event.error.message;
-  } else {
-    displayError.textContent = '';
-  }
-});
-var amt,plan,desc
-
-function pay(a,p,d) {
-	amt=a
-	plan=p
-	desc=d
-  stripe.createToken(card).then(function(result) {
-    if (result.error) {
-      // Inform the user if there was an error.
-      var errorElement = document.getElementById('card-errors');
-      errorElement.textContent = result.error.message;
-    } else {
-      // Send the token to your server.
-      stripeTokenHandler(result.token);
-    }
-  });
-}
-	// Submit the form with the token ID.
-	function stripeTokenHandler(token) {
-		
-		var url='https://lushmatch.com/x_charge.php?stripe_test_mode=' + test_mode + '&token='+token.id+'&login='+getCookie('login')+'&mid='+getCookie('mid')+'&mobile='+getCookie('mobile')+'&email='+getCookie('email')+'&amt='+amt+'&plan='+plan+'&desc='+desc
-		$.ajax({url:url,success:function(data){$.alert(data)}})
-	  }
-		
 		function getLocation() {
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(displayPosition);
@@ -673,7 +732,7 @@ function showPosition(position) {
 			dataType: "html",
 			cache: false,
 			success: function(msg) {
-				$.alert({title:'',content:'Account re-activated! You will now appear in search results and/or Browse Lists and will once again, receive mails and/or notifications.<br><br> You may hide and go off grid any time when you suspend your account again.'})
+				$.alert({title:'',content:'Account re-activated! You will now appear in search resul` and/or Browse Lists and will once again, receive mails and/or notifications.<br><br> You may hide and go off grid any time when you suspend your account again.'})
 				$('#xsa').html('<input class="form-control btn btn-danger" type="button" style=";height:40px;font-size:16px!Important;color:#fff;background:" id="" onclick="suspend_account()" value="SUSPEND ACCOUNT">')
 			}
 		})
@@ -685,6 +744,19 @@ function showPosition(position) {
 	}
 	function render_mob() {
 	}		
+	
+	
+	// This event hander will listen for messages from the child
+	window.addEventListener('message', function(e) {
+		ProcessChildMessage_2(e.data); // e.data hold the message
+	} , false);
+
+	function ProcessChildMessage_2(message) {
+		setCookie('tags',message)
+		pupdate(message)
+	}
+
+	
 	</script>
 		<script src="https://sugardaddylocal.com/js/jquery.js"></script>
 		<script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
