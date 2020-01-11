@@ -401,6 +401,7 @@
 			
 			window.onclick=view_profile
 			function view_profile(e) {
+				setCookie('currMID','')
 				if (e.target.id) {
 
 					var data_id=e.target.getAttribute('data-id')
