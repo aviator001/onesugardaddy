@@ -182,11 +182,6 @@ h1,h2,h3,h4 {
 <script src='https://onesugardaddy.com/range/rangeslider.js'></script>
   
 <script>
-	var min_age=18
-	var max_age=80
-	var x_miles=3500
-	var x_gender='Sugar Baby'
-	var search_type,searchNameTerm
 
 	//Load all JS libraries
 	['https://onesugardaddy.com/custom_js/geocomplete.js','https://maps.googleapis.com/maps/api/js?key=AIzaSyDAuvU_A1iMThoe1i6Joi26nSTDQkjKlDA&libraries=places'].forEach(function(src) {
@@ -196,6 +191,15 @@ h1,h2,h3,h4 {
 		document.head.appendChild(script);
 	});	
 	
+	var min_age=18
+	var max_age=80
+	var x_miles=3500
+	var x_gender='Sugar Baby'
+	var search_type,searchNameTerm
+	setCookie('x_min',min_age)
+	setCookie('x_max',max_age)
+	setCookie('x_miles',x_miles)
+	setCookie('x_gender',x_gender)
 
 var placeSearch, autocomplete;
 var componentForm = {
@@ -268,6 +272,7 @@ setTimeout('initAutocomplete()',1000)
         $('.done').addClass('active');
         $('.slide').removeClass('active');
 		min_age=value
+		setCookie('x_min',min_age)
 		setTimeout(function(){
 			searchLocation()
 		},1)
@@ -337,6 +342,7 @@ setTimeout('initAutocomplete()',1000)
         $('.done').addClass('active');
         $('.slide').removeClass('active');
 		max_age=value
+		setCookie('x_max',max_age)
 		setTimeout(function(){
 			searchLocation()
 		},1)

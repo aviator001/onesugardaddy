@@ -621,7 +621,7 @@ function getRandomColor(){
 			if (qs('search_type')=='a'){
 			
 				//		https://sugardaddylocal.com/x_browse_search_a.php?lat=33.8622366&lng=-118.3995194&start=0&gender=Sugar Daddy&type=search&count=20&x_miles=3500&min_age=18&max_age=80&photos=undefined
-				var url='https://sugardaddylocal.com/x_browse_search_a.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&x_gender='+getCookie('x_gender')+'&lat='+qs('lat')+'&lng='+qs('lng')+'&x_miles='+getCookie('x_miles')+'&max_age='+getCookie('x_max')+'&min_age='+getCookie('x_min')
+				var url='https://sugardaddylocal.com/x_browse_search_a.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&gender='+getCookie('x_gender')+'&lat='+qs('lat')+'&lng='+qs('lng')+'&x_miles='+getCookie('x_miles')+'&max_age='+getCookie('x_max')+'&min_age='+getCookie('x_min')
 			} else if (qs('search_type')=='b') {
 				var url='https://onesugardaddy.com/x_browse_search_b.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')
 			} else if (qs('search_type')=='c') {
@@ -739,28 +739,28 @@ function getRandomColor(){
 							str+=	'				<div class="team-card-style-1" id="profileText'+i+'" class="team-info">'
 							str+=	'				<div style="position:fixed;top:100px;width:80%;text-align:center;margin:auto;padding:0;border:none;overflow:hidden;word-wrap:break-word">'+strT+'</div>'
 							str+=	'					<div>'
-							str+=	'						<div class="team-card-style-1" style="position:fixed;z-index:99999;width:100%;margin:auto;margin-top:-55px;height:55px;opacity:0.6;background:#333"></div>'
-							str+=	'						<div style="position:fixed;z-index:999999999999999999999;width:100%;margin:auto;margin-top:-60px;height:50px;color:white;font-weight:300;font-size:18px;padding:2px"><b>'+data[i].login.toUpperCase()+', ' + data[i].age+'</div>'
+							str+=	'						<div class="team-card-style-1" style="position:fixed;z-index:99999;width:100%;margin:auto;margin-top:-65px;height:65px;opacity:0.6;background:#333"></div>'
+							str+=	'						<div style="position:fixed;z-index:999999999999999999999;width:100%;margin:auto;margin-top:-60px;height:60px;color:white;font-weight:300;font-size:18px;padding:2px"><b>'+data[i].login.toUpperCase()+', ' + data[i].age+'</div>'
 							str+=	'						<table style="position:fixed;z-index:99999999;left:0;right:0;max-width:220px;margin:auto;margin-top:-35px">'
 							str+=	'							<tr>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<a href="javascript:send_mail('+data[i].id+')"><img src="images/contact.png" style="margin:5px;width:60px;"></a>'
+							str+=	'									<a href="javascript:videoCallx(\''+data[i].login+'\')"><img src="images/video_call.png" style="margin:5px;width:60px;"></a>'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<a href="javascript:videoCallx(\''+data[i].login+'\')"><img src="images/video_call.png" style="margin:5px;width:70px;"></a>'
+							str+=	'									<a href="javascript:send_mail('+data[i].id+')"><img src="images/contact.png" style="margin:5px;width:80px;"></a>'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<a href="javascript:toggle_favs()"><img src="images/add_fav.png" style="margin:5px;width:70px;"></a>'
+							str+=	'									<a href="javascript:toggle_favs()"><img src="images/add_fav.png" style="margin:5px;width:60px;"></a>'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center">'
 							str+=	'								</td>'
 							str+=	'							</tr>'
 							str+=	'							<tr>'
 							str+=	'								<td style="width:25%;text-align:center;font-size:10px">'
-							str+=	'									<b>MSG USER</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+							str+=	'									<b>VIDEO CALL</b>&nbsp;&nbsp;'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center;font-size:10px">'
-							str+=	'									<b>VIDEO CALL</b>&nbsp;&nbsp;'
+							str+=	'									<b>MSG USER</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center;font-size:10px">'
 							str+=	'								<b>ADD FAV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
@@ -801,14 +801,14 @@ function getRandomColor(){
 							
 							id=data[i].id
 							ur=data[i].user_rights
-						//	if (!mids || mids.indexOf(id)<0) {
+							if (mids.indexOf(id)<0) {
 								var div=document.createElement('div')
 								div.id='p'+id
 								div.innerHTML=str
 								if (i==0) saved=div 
 								$$('profiles').appendChild(div)
 								div.className='magictime spaceInLeft'
-								ps.push(div)
+								if (mids.indexOf(id)<0) ps.push(div)
 								mids.push(id)
 								urs[i]=ur
 								currMID=id
@@ -824,7 +824,7 @@ function getRandomColor(){
 									}
 								}
 								prevEl=data[i].id+''
-						//	}
+							}
 							
 							if (data[i].general_info) {
 								general_info=data[i].general_info
@@ -1059,12 +1059,14 @@ function getRandomColor(){
 	}
 	
 	function pullup(x) {
-		if (!ps[x]) load_next()
+		if (!ps[x]) {
+			load_next()
+			return
+		}
 		ps[x].scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
 	}
 	function load_next() {
-		setTimeout('showWait()',1)
 		setTimeout('loadProfiles('+no+')',1)
 	}
 

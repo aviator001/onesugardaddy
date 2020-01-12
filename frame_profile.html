@@ -478,7 +478,6 @@ font-weight:bold
 				}	
 			}
 	function dinit() {
-		$$('tf').src='https://lushmatch.com/tags/index.html?gender='+ getCookie('gender')
 		var url = 'https://onesugardaddy.com/x_get_user_info.php?member_id=' + getCookie('mid')
 		console.log(url)
 		var request = $.ajax({
@@ -488,6 +487,18 @@ font-weight:bold
 				cache: false,
 				success: function(msg) {
 					msg=JSON.parse(msg)
+					var tg=msg.tags
+					var tagd=''
+
+					if (tg) {
+						tg=tg.split(',')
+						for (var f=0; f<tg.length; f++) {	
+							tagd+=tg[f]+'|'
+						}
+						tagd=tagd.substr(0,tagd.length-1)
+					}	
+					$$('tf').src='tags.html?gender='+ getCookie('gender')+'&tags='+tagd 
+					console.log('tags.html?gender='+ getCookie('gender')+'&tags='+tagd)
 					if (msg.gender=='Sugar Daddy') {
 						document.getElementById('allowance_sd').style.display='block'
 						document.getElementById('allowance_sb').style.display='none'
@@ -751,9 +762,15 @@ function showPosition(position) {
 		ProcessChildMessage_2(e.data); // e.data hold the message
 	} , false);
 
+	var mg=''
 	function ProcessChildMessage_2(message) {
-		setCookie('tags',message)
-		pupdate(message)
+		for (var f=0; f<message.length; f++) {
+			mg+=message[f]+','
+		}
+		mg=mg.substr(0,mg.length-1)
+		setCookie('tags',mg)
+		console.log(mg)
+		pupdate(mg)
 	}
 
 	

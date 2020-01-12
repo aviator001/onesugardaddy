@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="description" content="Converts HTML input/textarea into Tags component">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://lushmatch.com/tags/tagify.css">
-        <script src="https://lushmatch.com/tags/tagify.js"></script>
+        <link rel="stylesheet" href="https://onesugardaddy.com/tagify.css">
+        <script src="https://onesugardaddy.com/tagify.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://lushmatch.com/tags/jQuery.tagify.min.js"></script>
 <style>
@@ -82,6 +82,11 @@ if (qs('gender')=='Sugar Baby') {
 } else {
 	$('#tags3').val('$1000 monthly,seeking princess')
 }
+if (qs('tags')) {
+	var gt=qs('tags').replace(/\|/g,',')
+	$('#tags3').val(gt)
+	xtags.push(gt.split(','))
+}
 (function(){
 var input = document.querySelector('input[name=tags3]'),
     tagify = new Tagify(input, {
@@ -120,8 +125,13 @@ function transformTag( tagData ){
 
 tagify.on('add', function(e){
 	xtags.push(e.detail.data.value)
-	setCookie('tags',JSON.stringify(xtags))
-	window.parent.postMessage(JSON.stringify(xtags), "*");
+	setCookie('tags',xtags)
+	window.parent.postMessage(xtags, "*");
+});
+tagify.on('remove', function(e){
+	xtags.splice(xtags.indexOf(e.detail.data.value),1)
+	setCookie('tags',xtags)
+	window.parent.postMessage(xtags, "*");
 
 });
 
