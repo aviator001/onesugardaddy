@@ -618,14 +618,17 @@ function getRandomColor(){
 		var type=qs('type')
 		var str=''
 		if (type=='search') {
-			if (qs('search_type')=='a') {
-				var url='https://sugardaddylocal.com/x_browse_search_a.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')
+			if (qs('search_type')=='a'){
+			
+				//		https://sugardaddylocal.com/x_browse_search_a.php?lat=33.8622366&lng=-118.3995194&start=0&gender=Sugar Daddy&type=search&count=20&x_miles=3500&min_age=18&max_age=80&photos=undefined
+				var url='https://sugardaddylocal.com/x_browse_search_a.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&x_gender='+getCookie('x_gender')+'&lat='+qs('lat')+'&lng='+qs('lng')+'&x_miles='+getCookie('x_miles')+'&max_age='+getCookie('x_max')+'&min_age='+getCookie('x_min')
 			} else if (qs('search_type')=='b') {
 				var url='https://onesugardaddy.com/x_browse_search_b.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')
 			} else if (qs('search_type')=='c') {
 				var url='https://onesugardaddy.com/x_browse_search_c.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')
 			}
-
+				console.log(url)
+				
 		} else {
 			if (qs('type')=='local') {
 				var url='https://onesugardaddy.com/x_browse_local.php?start='+start_local+'&type='+qs('type')+'&count='+no+'&gender='+getCookie('gender')+'&mid='+qs('id')+'&max_age='+getCookie('max_age')+'&min_age='+getCookie('min_age')+'&photos='+getCookie('x_photos')+'&zip='+getCookie('x_zip')+'&miles='+getCookie('x_miles')
@@ -695,12 +698,14 @@ function getRandomColor(){
 							var income=data[i].income
 							var race=data[i].race
 							var allowance=data[i].allowance_sd ? data[i].allowance_sd : data[i].allowance_sb
+							if (data[i].tags) {
 							var tags=JSON.parse(data[i].tags)
 							if (tags) {
 								for (var g=0; g<6; g++) {
 									strT+='<span class="tagify" style="background:'+getRandomColor()+';padding:2px;padding-left:6px;padding-right:6px;font-size:12px;border-radius:4px;margin:2px">'+tags[g]+'</span>'
 								}
-							}						
+							}					
+}							
 							if (race==null) race=''
 							if (income==null) income=''
 							if (allowance==null) allowance=''
@@ -725,23 +730,29 @@ function getRandomColor(){
 					}
 					var disp='block'
 				}
+					var wh=window_height()*0.9
 					currLogin=data[i].login
-							str+=	'		<div class="col-md-4 col-sm-4 col-xs-12" style="position:;max-height:650px!Important;width:100%;max-width:500px;left:0;right:0;margin:auto;padding:0px;margin-top:10px;border-radius:12px">'
-							str+=	'			<div class="team-card-style-1" style="box-shadow:none!Important;height:550px!Important;max-height:550px!Important;min-height:550px!Important;left:0;right:0;bottom:'+btm+'px;background:;margin:auto;margin-bottom:10%;border-radius:12px;margin-top:10%;'+tb+':'+mtop+'px!Important;width:'+mw+';padding-top:0">'
-							str+=	'				<div class="team-card-style-1" style="box-shadow:none!Important;background:url(https://onesugardaddy.com/bg/fav_bg_0'+bg+'.jpg);background-size:cover;height:150px"></div>'
-							str+=	'				<a href="member_preview_all_photos.html?mid=' + data[i].id + '"><img id="imgProfile'+data[i].id+'" src="https://onesugardaddy.com/sb/'+data[i].filename_1+'" style="width:200px;height:200px;border-radius:200px;border:10px solid white;margin:auto;margin-top:-100px"></a>'
+							str+=	'		<div class="col-md-4 col-sm-4 col-xs-12" style="margin:auto;max-height:'+wh+'px!Important;width:100%;max-width:500px;left:0;right:0;padding:0px;">'
+							str+=	'			<div class="team-card-style-1" style="box-shadow:none!Important;height:'+wh+'px!Important;max-height:'+wh+'px!Important;min-height:'+wh+'px!Important;left:0;right:0;">'
+							str+=	'				<div class="team-card-style-1" style="box-shadow:none!Important;background:#fff;height:150px"></div>'
+							str+=	'				<a href="member_preview_all_photos.html?mid=' + data[i].id + '"><img id="imgProfile'+data[i].id+'" src="https://onesugardaddy.com/sb/'+data[i].filename_1+'" style="width:100%;border:0px solid white;margin:auto;margin-top:-120px"></a>'
 							str+=	'				<div class="team-card-style-1" id="profileText'+i+'" class="team-info">'
+							str+=	'				<div style="position:fixed;top:100px;width:80%;text-align:center;margin:auto;padding:0;border:none;overflow:hidden;word-wrap:break-word">'+strT+'</div>'
 							str+=	'					<div>'
-							str+=	'						<table style="width:80%;margin:auto;margin-top:-20px">'
+							str+=	'						<div class="team-card-style-1" style="position:fixed;z-index:99999;width:100%;margin:auto;margin-top:-55px;height:55px;opacity:0.6;background:#333"></div>'
+							str+=	'						<div style="position:fixed;z-index:999999999999999999999;width:100%;margin:auto;margin-top:-60px;height:50px;color:white;font-weight:300;font-size:18px;padding:2px"><b>'+data[i].login.toUpperCase()+', ' + data[i].age+'</div>'
+							str+=	'						<table style="position:fixed;z-index:99999999;left:0;right:0;max-width:220px;margin:auto;margin-top:-35px">'
 							str+=	'							<tr>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<div id="sun1" style="text-align:center;width:60px;height:60px"><a href="javascript:send_mail('+data[i].id+')"><img src="images/contact.png" style="margin:20px;width:25px;"></a></div>'
+							str+=	'									<a href="javascript:send_mail('+data[i].id+')"><img src="images/contact.png" style="margin:5px;width:60px;"></a>'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<div id="sun2" style="text-align:center;width:60px;height:60px;"><a href="javascript:videoCallx(\''+data[i].login+'\')"><img src="images/video_call.png" style="margin:20px;width:25px;"></a></div>'
+							str+=	'									<a href="javascript:videoCallx(\''+data[i].login+'\')"><img src="images/video_call.png" style="margin:5px;width:70px;"></a>'
 							str+=	'								</td>'
 							str+=	'								<td style="width:25%;text-align:center">'
-							str+=	'									<div id="sun4" style="text-align:center;width:60px;height:60px"><a href="javascript:toggle_favs()"><img src="images/add_fav.png" style="margin:20px;width:25px;"></a></div>'
+							str+=	'									<a href="javascript:toggle_favs()"><img src="images/add_fav.png" style="margin:5px;width:70px;"></a>'
+							str+=	'								</td>'
+							str+=	'								<td style="width:25%;text-align:center">'
 							str+=	'								</td>'
 							str+=	'							</tr>'
 							str+=	'							<tr>'
@@ -754,23 +765,23 @@ function getRandomColor(){
 							str+=	'								<td style="width:25%;text-align:center;font-size:10px">'
 							str+=	'								<b>ADD FAV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 							str+=	'								</td>'
+							str+=	'								<td style="width:25%;text-align:center;font-size:10px">'
+							str+=	'								</td>'
 							str+=	'							</tr>'
 							str+=	'						</table>'
 							str+=	'					</div>'
 							str+=	'					<br><br><br>'
+							if (race) str+= 			race+' in '
+							str+=						data[i].location+'<br>'
 							var gen=data[i].gender.toUpperCase()
 							var gg=gen
-							str+=	'					<div style="font-size:16px!Important;margin-top:-55px;margin-bottom:10px;width:100%"><b>'+data[i].login.toUpperCase()+', ' + data[i].age
-							if (race) str+= 			', '+race+'</div>'
-							str+=										'<div style="font-wight:300;font-family:Open Sans;font-size:15px;color:silver;margin-top:-10px">'+data[i].location.toUpperCase().substr(0,15) + '</b></div><div id="location'+i+'" class=""></div>'
 							if (income)	str+=	'						<div style="font-size:12px!Important;padding-left:30px;padding-right:30px">Income: '+income+'</div>'
 							if (data[i].allowance_sd)	str+=	'						<div style="font-size:12px!Important;padding-left:30px;padding-right:30px">Allowance Offered: '+data[i].allowance_sd+'</div>'
 							if (data[i].allowance_sb)	str+=	'						<div style="font-size:12px!Important;padding-left:30px;padding-right:30px">Seeking Allowance: '+data[i].allowance_sb+'</div>'
-							str+=	'						<div style="max-height:70px;height:70px;font-size:12px!Important;padding-left:30px;padding-right:30px">'+general_info+'</div>'
+							str+=	'						<div style="max-height:200px;height:150px;font-size:12px!Important;padding-left:30px;padding-right:30px">'+general_info+'</div>'
 							str+=   '					</div>'
-							str+=	'						<div style="width:80%;text-align:center;margin:auto;padding:0;border:none;overflow:hidden;margin-top:-65px;word-wrap:break-word">'+strT+'</div>'
-							str+=	'						<table style="width:100%;text-align:center;margin:auto;width:100%;position:fixed;bottom:100px">'
-							str+=	'							<tr><td colspan=4><a href="javascript:dislike(\'p'+data[i].id+'\')"><img src="images/nav9.png" style="width:50px;margin-bottom:2px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:like(\'p'+data[i].id+'\')"><img src="images/nav4.png" style="width:50px;margin-bottom:2px"></a></td></tr><tr style="height:10px"><td colspan=4></td></tr>'
+							str+=	'						<table style="width:100%;text-align:center;margin:auto;width:100%;position:fixed;bottom:40px;z-index:99999999999">'
+							str+=	'							<tr><td colspan=4><a href="javascript:dislike(\'p'+data[i].id+'\')"><img src="images/nav9.png" style="width:80px;margin-bottom:2px"></a>&nbsp;&nbsp;<a href="javascript:toggle_favs()"><img src="images/more_options.png" style="margin:5px;width:60px;"></a>&nbsp;&nbsp;<a href="javascript:like(\'p'+data[i].id+'\')"><img src="images/nav4.png" style="width:80px;margin-bottom:2px"></a></td></tr><tr style="height:10px"><td colspan=4></td></tr>'
 							str+=	'								<tr style="display:none"><td style="width:15%;text-align:center"><a href="javascript:wishlist('+data[i].id+')" style="text-decoration:none"><img src="images/new_wish.png" style="width:25px"></a></td>'
 							str+=	'									<td style="width:15%;text-align:center"><a href="javascript:coming_soon()"><img src="images/offer.png" style="width:25px;opacity:1"></a></td>'
 							str+=	'									<td style="width:15%;text-align:center"><a href="javascript:coming_soon()"><img src="images/rewards.png" style="width:20px;opacity:2"></a></td>'

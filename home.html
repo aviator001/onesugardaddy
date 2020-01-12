@@ -407,12 +407,6 @@
 					var data_id=e.target.getAttribute('data-id')
 					var data_start=e.target.getAttribute('data-start')
 					var data_count=e.target.getAttribute('data-count')
-					var data_x_gender=e.target.getAttribute('data-x-gender')
-					var data_max_age=e.target.getAttribute('data-max-age')
-					var data_min_age=e.target.getAttribute('data-min-age')
-					var data_x_photos=e.target.getAttribute('data-x-photos')
-					var data_x_zip=e.target.getAttribute('data-x-zip')
-					var data_x_miles=e.target.getAttribute('data-x-miles')
 
 					if (e.target.id.indexOf('img_local_')>-1) {
 						location.href='profileBrowse.html?id='+data_id+'&type=local&start='+x_start_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=local'
@@ -421,7 +415,7 @@
 						location.href='profileBrowse.html?id='+data_id+'&type=new&start='+x_start_new+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new'
 					}
 					if (e.target.getAttribute('data-type')=='new_local') {
-						url='profileBrowse.html?id='+data_id+'&type=new_local&start='+data_start+'&gender='+data_x_gender+'&max_age='+data_max_age+'&min_age='+data_min_age+'&photos='+data_x_photos+'&zip='+data_x_zip+'&miles='+data_x_miles+'&count='+data_count
+						url='profileBrowse.html?id='+data_id+'&type=new_local&start='+mega_new_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&count='+data_count
 						location.href=url
 					}
 				}
@@ -481,8 +475,6 @@
 					if (data[i]) {
 								id=data[i].id
 								ids += data[i].id + ','
-								id=data[i].id
-								ids += data[i].id + ','
 								imgB=document.createElement('img')
 								imgB.src=getfile()  
 								imgB.style='width:100%;height:30%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
@@ -497,12 +489,6 @@
 								imgG.setAttribute('data-id',data[i].id)
 								imgG.setAttribute('data-start',mega_new_local)
 								imgG.setAttribute('data-count',no)
-								imgG.setAttribute('data-x-gender',x_gender)
-								imgG.setAttribute('data-max-age',max_age)
-								imgG.setAttribute('data-min-age',min_age)
-								imgG.setAttribute('data-x-photos',x_photos)
-								imgG.setAttribute('data-x-zip',x_zip)
-								imgG.setAttribute('data-x-miles',x_miles)
 								imgG.setAttribute('data-type','new_local')
 								var cr=''
 								var corner=document.createElement('img')

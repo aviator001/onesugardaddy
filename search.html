@@ -774,6 +774,10 @@ setTimeout('initAutocomplete()',1000)
 		}
 		lat=getCookie('search_data').split(',')[0]
 		lng=getCookie('search_data').split(',')[1]
+		var x_photos=getCookie('x_photos')
+		var x_miles=getCookie('x_miles');
+		var x_min=getCookie('x_min');
+		var x_max=getCookie('x_max');
 		var url='https://sugardaddylocal.com/x_browse_search_a.php?lat=' + lat +'&lng='+lng+'&start=' + x_start + '&gender='+x_gender + '&type=search&count='+no+'&x_miles='+x_miles+'&min_age='+min_age+'&max_age='+max_age+'&photos='+x_photos
 		console.log(url)
 		if (wait_active===false) {
