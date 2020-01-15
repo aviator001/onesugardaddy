@@ -333,6 +333,7 @@
 				} else {
 					x_gender=getCookie('x_gender')
 				}
+				setCookie('x_photos','1')
 				x_photos=getCookie('x_photos')
 				x_zip=getCookie('x_zip')
 				x_miles=getCookie('x_miles')
@@ -429,7 +430,8 @@
 
 			function getProfilesNewLocal() {
 				if (!getCookie('x_gender') || getCookie('x_gender')=='null' || getCookie('x_gender')=='') {
-					x_gender=getCookie('gender')
+					if (getCookie('gender')=='Sugar Daddy') x_gender='Sugar Daddy'
+						else x_gender='Sugar Baby'
 				} else {
 					x_gender=getCookie('x_gender')
 				}
@@ -483,6 +485,7 @@
 								imgG.id='img_newest_'+id+'|'+x_start_new_local
 								imgG.style.position='absolute'
 								imgG.style.margin='auto'
+								imgG.style.zIndex='99999'
 								imgG.style.left='0'
 								imgG.style.right='0'
 								imgG.style.marginTop='20%'
@@ -518,10 +521,10 @@
 										gi=data[i].general_info
 									}
 								}
-								cr+='<table style="position:absolute;bottom:10px;margin:auto;left:0;right:0;width:100%">'
-								cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:16px">'+data[i].login.substr(0,15).toUpperCase()+' ' + data[i].age + '<div style="font-size:14px;color:silver">' + data[i].location +'</div><div style="font-size:12px;color:orange"><b>'+data[i].distance+'</b> MILES</div></span></div></td></tr>'
-								cr+='<tr><td colspan=4><div style="margin-top:-10px;padding:5px;line-height:0.9em;font-size:14px;text-align:center">'+gi+'</div><button style="position:absolute;left:0;right:0;padding:2px;font-size:10px;margin-top:5px;margin:auto;width:40px" class="btn btn-xx" style="">MORE</button></td></tr>'
-								cr+='<tr><td style="text-align:center;width:100%;padding:5px;padding-top:10px"><button onclick="videoCall(\''+data[i].login+'\')" class="btn" style="padding:5px;background:orange;width:20%;margin-bottom:-10px"><img style="width:60px" src="images/video_cam_black.png"></button> <button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:75%;margin-bottom:-10px">CONTACT</button></td>'
+								cr+='<table style="position:absolute;bottom:10px;margin:auto;left:0;right:0;width:100%;font-size:0.8em!Important">'
+								cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:16px;font-size:1em!Important;font-family:Open Sans"><b><strong>'+data[i].login.substr(0,15).toUpperCase()+' ' + data[i].age + '</b></strong><div>'+data[i].gender+'</div><div style="font-size:12px;color:silver">' + data[i].location +'</div><div style="font-size:10px;color:orange"><b>'+data[i].distance+'</b> MILES</div></span></div></td></tr>'
+								cr+='<tr><td colspan=4><div style="margin-top:-10px;padding:5px;line-height:0.9em;text-align:center;font-size:0.9em!Important">'+gi+'</div><button style="position:absolute;left:0;right:0;padding:2px;font-size:10px;margin-top:5px;margin:auto;width:40px" class="btn btn-xx" style="">MORE</button></td></tr>'
+								cr+='<tr><td style="text-align:center;width:100%;padding:5px;padding-top:10px;font-size:0.8em!Important"><button onclick="videoCall(\''+data[i].login+'\')" class="btn" style="padding:5px;background:orange;width:20%;margin-bottom:-10px"><img style="width:60px" src="images/video_cam_black.png"></button> <button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:75%;margin-bottom:-10px">CONTACT</button></td>'
 								cr+='</tr></table>'
 								cStr.innerHTML=cr
 								dpg.appendChild(imgB)
@@ -1210,7 +1213,6 @@
 			},10)
 
 			function update_parameters() {
-				wait3()
 				/**
 					Browse Types: ACTIVITY, MOST POPULAR, NEW, LOCAL, NEW_LOCAL, ONLINE_NOW
 				 	Filter By: Age, Gender, Distance, Photos
@@ -1225,7 +1227,7 @@
 				x_miles=getCookie('x_miles')
 				max_age=getCookie('x_max_age')
 				min_age=getCookie('x_min_age')
-
+				
 			}
 				var mega_new_local=0
 				var mega_local=0
@@ -1243,7 +1245,6 @@
 				setTimeout(function(){
 					setCookie('x_min_age',av)
 					update_parameters()
-					alert(type)
 					switchBrowse(type)
 				},10)
 			}

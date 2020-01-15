@@ -46,6 +46,17 @@
 		function view_profile() {
 			location.href='view_profile.html?member_id='+getCookie('mid')
 		}
+	function guid(){
+		j=16
+		var op=''
+		var arr=new Array('a','b','c','d','e','f','i','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z',0,1,2,3,4,5,6,7,8,9,0,0,1,2,3,4,5,6,7,8,9,0)
+		for (k=0;k<j;k++) {
+			var inx=randomIntFromInterval(0,arr.length-1)
+			op += arr[inx]
+		}
+		return op;
+	}
+		
 		function qs(name, url) {
 			if (!url) {
 			  url = window.location.href;
@@ -572,6 +583,7 @@
 				</style>
 
 		<script>
+		var action
 			var mt
 			var show_menu='0'
 			
@@ -601,7 +613,7 @@
 		</script>
 <div class="" style="margin:auto;position:absolute;left:0;right:0;display:block;width:100%;top:20px;padding-top:10px">
 <div class="row">
-<div class="container" style="position:absolute;margin:auto;left:0;right:0;margin:auto;top:50px;text-align:center;display:block;max-width:650px;width:100%;padding:10px;height:400px">
+<div class="container" style="position:absolute;margin:auto;left:0;right:0;margin:auto;top:50px;text-align:left;display:block;max-width:650px;width:100%;padding:10px;height:400px">
 <div class="row">
 <table class='www_box' style='width:95%;background:#fff;padding:0'>
 <tr>
@@ -610,7 +622,7 @@
 </div>
 </td>
 <td style='padding-left:10px' valign=top>
-<table style='margin:15px;margin-top:0' valign=top>
+<table style='margin:15px;margin-top:0;font-family:Open Sans' valign=top>
 <tr>
 <td>
 <span style='font-size:24px;color:red;text-shadow:none;font-family:Open Sans'>
@@ -644,7 +656,7 @@
 <table style="margin-top:20px"><tr><td style="width:90%;padding:10px;padding-top:10px">
 <textarea id="mail_pad" style="height:50px;width:100%;border:2px solid lightblue;border-radius:4px 0 0 4px;"></textarea>
 </td><td>
-<button onclick="send_message()" style="height:50px;padding-left:10px;padding-right:10px;margin-bottom:20px" class="btn btn-warning" style=""> SEND </button>
+<button onclick="send_message()" style="height:50px;padding-left:10px;padding-right:10px;margin-bottom:20px;background:lightgreen;border:none" class="btn btn-warning" style=""> SEND </button>
 </td></tr></table>
 </div>
 <div id="user_images"></div>
@@ -658,33 +670,34 @@
 	<!-- <span> -->
 		<!-- <button class="btn btn-info" onclick="show_attach()" style="padding-left:10px;padding-right:10px;margin-left:2px;"> ATTACH PHOTO </button> -->
 	<!-- </span> -->
-				<table style="vertical-align:center;margin:auto;margin-top:-25px">
+				<table style="vertical-align:center;margin:auto;text-align:left;width:100%">
 					<tr>
-
-						<td style="padding-top:10px">
-							<a href="javascript:history.go(-1)">
-								<div style="font-family:Tahoma;margin-right:5px;border-radius:4px;padding:10px;margin-top:5px;background:red;color:#fff;height:50px!Important;width:100px!Important">
-									<b>CANCEL</b>
-								</div>
-							</a>
+						<td style="font-family:Open Sans Condensed;width:80%;padding-left:25px">
+							<a href="javascript:start1()" style="color:#aaa"><h3><b>Make A Video Call</b></h3><span style="position:absolute;margin-top:-10px;font-family:Open Sans;font-size:12px;color:#000">Start a video call with member</span></a>
 						</td>
-						<td style="padding-top:10px">
-							<a href="inbox.html">
-								<div style="margin-left:5px;border-radius:4px;padding:10px;margin-top:5px;background:silver;color:#fff;height:50px!Important;width:50px!Important">
-									<i style="font-size:2em" class="fa fa-home"></i>
-								</div>
-							</a>
-
+						<td style="width:20%">
+							<img src="images/video_call.png" style="width:70px;margin-top:10px">
 						</td>
-						<td style="padding-top:10px">
-							<a href="inbox.html">
-								<div style="margin-left:5px;border-radius:4px;padding:10px;margin-top:5px;background:silver;color:#fff;height:50px!Important;width:50px!Important">
-									<i style="font-size:2em" class="fa fa-inbox"></i>
-								</div>
-							</a>
+					</tr>
+				</table>
+				<table style="vertical-align:center;margin:auto;text-align:left;width:100%">
+					<tr>
+						<td style="font-family:Open Sans Condensed;width:80%;padding-left:25px">
+							<a href="javascript:start1()" style="color:#aaa"><h3><b>Send Self Destruct Photo</b></h3><span style="position:absolute;margin-top:-10px;font-family:Open Sans;font-size:12px;color:#000">Start a video call with member</span></a>
 						</td>
-						<td style="padding:10px">
-									<button onclick="vc()" class="btn" style="padding:5px;background:turquoise;width:100px;height:50px;margin-top:10px;BORDER-RADIUS:4px">VIDEO CALL</button>
+						<td style="width:20%">
+							<a href="javascript:start1()"><img src="https://onesugardaddy.com/images/sd_photo.png" style="width:70px;margin-top:10px"></a>
+						</td>
+					</tr>
+				</table>
+			
+				<table style="vertical-align:center;margin:auto;text-align:left;width:100%">
+					<tr>
+						<td style="font-family:Open Sans Condensed;width:80%;padding-left:25px">
+							<a href="javascript:start2()" style="color:#aaa"><h3><b>Send Self Destruct Video</b></h3><span style="position:absolute;margin-top:-10px;font-family:Open Sans;font-size:12px;color:#000">Start a video call with member</span></a>
+						</td>
+						<td style="width:20%">
+							<a href="javascript:start2()"><img src="https://onesugardaddy.com/images/sd_video.png" style="width:70px;margin-top:10px"></a>
 						</td>
 					</tr>
 				</table>
@@ -695,16 +708,7 @@
 
 <script src="https://lushmatch.com/assets/js/jquery-confirm.min.js"></script>
 <script src="https://lushmatch.com/dz/dropzone.min.js"></script>
-		<div id="frmHolder">
-			<form style="width:100%;max-width:650px;border:none;display:none" id="dz" action="upload.php"></form>
-		</div>
-		<div id="attachments" style="display:none" class="col-md-12" style="margin-top:10px">
-			<label for="member-photo">Email Attachments</label>
-			<div id="pbar_holder">
-				<div id="pbar" style="background:url(assets/images/bar_orange.png);width:0px;height:50px"></div><span id="pc"></span>
-			</div>
-			<form style="width:100%;max-width:650px;border:none" class="dropzone dz-preview" id="member" action="upload.php"></form>
-		</div>
+
 <script>
 var mid
 function fs(el) {
@@ -724,6 +728,14 @@ if(typeof rfs!="undefined" && rfs){
      wscript.SendKeys("{F11}");
   }
 }
+}
+
+function start1() {
+	location.href='self_destruct_photo.html?to_member_id='+qs('to_member_id')
+}
+
+function start2() {
+	location.href='self_destruct_video.html?to_member_id='+qs('to_member_id')
 }
 
 function $$(ox) {
@@ -772,77 +784,11 @@ function $$(ox) {
 			 return winW;
 		}
 	}	
-	var to=qs('to_member_id')
-	if (!to) to=getCookie('chatting_with')
+	var to
+	var to_member_id=qs('to_member_id')
+	to=to_member_id
 	var from=getCookie(mid)
 
-	function attach_to_new_message(elemID,store_folder) {
-		if (!elemID) var elemID='dz'
-		if (!store_folder) var store_folder='w'
-		attach_id=attID()
-		setCookie('attach_id', attach_id)
-		setCookie('chatting_with',to_member_id)
-		if (myDropzone) {
-			myDropzone.destroy()
-		}
-		var someParameter=[]
-		myDropzone = new Dropzone("form#"+elemID, { maxFiles:5,url: "new_mail_upload.php", dictDefaultMessage:'Click here to upload Email Attachment'});
-		myDropzone.on('sending', function(file, xhr, formData){
-			var ext=file.name.split('.')[1]
-			file_name=guid() + '.' + ext
-			formData.append('attach_id', attach_id);
-			formData.append('file_name', file_name);
-			formData.append('mid', getCookie('mid'));
-			formData.append('to_member_id', to_member_id);
-			formData.append('store_folder', store_folder);
-			filenames.push(file_name)
-			setCookie('filenames', JSON.stringify(filenames))
-			msg += '<img src=\'https://lushmatch.com/w/' + file_name + '\' style=\'width:100px;border:10px solid white;border-bottom:30px solid white\' class=\'col-xs-4 col-md-2 col-lg-1 www_box2 www_box5\'>'
-			files++
-		});
-		myDropzone.on('complete', function(file){
-			var im=document.createElement("img")
-			im.src='https://lushmatch.com/w/'+file_name
-			im.className='col-xs-4'
-			im.style.width='100%'
-			im.style.display='block'
-			im.style.border='5px solid white'
-			$$(elemID).appendChild(im)
-			files--
-			if (files==0) {
-				attach_id=''
-				setCookie('attach_id','')
-				send_message(to_member_id,msg)
-			}
-		})
-	}
-	<!-- function sendmessage(to_member_id,msg) { -->
-		<!-- if ($$('mail_pad').value.trim()=='' && !uploads) return false -->
-		<!-- var message=document.getElementById('mail_pad').value -->
-		<!-- message=message.replace(/\&/g,'\&amp;') -->
-		<!-- message=message.replace(/'/g,"\'") -->
-		<!-- message=message.replace(/"/g,'\"') -->
-		<!-- message=message.replace(/\//g,'\/') -->
-
-		<!-- var from_u=getCookie('mid') -->
-		<!-- var url = encodeURI('https://lushmatch.com/x_send_mail.php?to=' + to_member_id + '&from=' + from_u + '&message=\'<div class="container"><div class="row"><div class="col-md-4">' + message + '</div><div class="col-md-4">' + msg + '</div></div></div>\'') -->
-		<!-- console.log(url) -->
-		<!-- jwait('sending') -->
-		<!-- var request = $.ajax({ -->
-			<!-- url: url,  -->
-			<!-- type: "GET", -->
-			<!-- dataType: "html", -->
-			<!-- cache: false, -->
-			<!-- success: function(data) { -->
-				<!-- $$('dz').style.display='none' -->
-				<!-- $$('mail_pad').value='' -->
-				<!-- $$('attachments').style.display='none' -->
-				<!-- new_mail_notification(getCookie('chatting_with_login')) -->
-				<!-- location.href='viewMessage.html?xid='+to_member_id -->
-			<!-- } -->
-			
-		<!-- }) -->
-	<!-- } -->
 	var str=''
 	Dropzone.autoDiscover=false
 	var iErr=0, attach_id
@@ -868,69 +814,7 @@ function $$(ox) {
 		}
 		return op;
 	}
-	var files,uploads
-	var myDropzone
-	var abort
-	function show_attach() {
-		files=0
-		uploads=0
-		$$('dz').style.display='block'
-		$$('attachments').style.display='block'
-		var url="https://lushnatch.com/new_mail_upload.php"
-		myDropzone = new Dropzone("form#dz", {
-			url: url,
-			maxFilesize: 1000000000,
-			renameFilename: function (file) {
-				attach_id=guid()		
-				setCookie('attach_id', attach_id)
-				console.log(file)
-				console.log('Renamed '+file+' to ' + attach_id)
-				return file.renameFilename = attach_id + "." + file.split('.').pop();
-			}
-		});
-		
-		myDropzone.on("addedfile", function(file) {
-			if ((file.type.indexOf('video')<0) && (file.type.indexOf('image')<0)) return false
-			if (file.size>1000000000) {
-				alert('too big')
-				abort=true
-				return false
-			} else {
-				abort=false
-			}
-			if (abort===true) return false
-			files++
-			uploads++
-			console.log('Added Upload #' + uploads + ': ' + attach_id)
-			str += '<img src="https://lushnatch.com/w/'+attach_id+'.'+file.name.split('.')[1]+'" style="width:75px">'
-		});
-		
-		myDropzone.on("totaluploadprogress", function(progress) {
-			if ($$('pbar').style.display=='none') {
-				$$('pbar').style.display='block'
-				$$('pbar_holder').style.display='block'
-				$$('pc').style.display='block'			
-			}
-			if (abort===true) return false
-			$$('pbar').style.width=Math.round(progress,0)+'%'
-			$$('pc').innerHTML=Math.round(progress,0) + '<b>%</b>'
-		})
-		
-		myDropzone.on("complete", function(file) {
-			files--
-			if (files==0) {
-				$$('dz').outerHTML=''
-				$$('user_images').innerHTML=str
-			}
-			if (abort===true) return false
-			$$('pbar').style.width='0px'
-			$$('pbar').style.display='none'
-			$$('pbar_holder').style.display='none'
-		});
-		console.log(str)
-		$('#dz').click()
-	}
-	
+
 	function fs(el) {
 		if (!el) el = document.documentElement, rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen	|| el.msRequestFullScreen;
 		if(typeof rfs!="undefined" && rfs){
@@ -1064,6 +948,6 @@ function $$(ox) {
 			}
 		})
 	}
-	
+
 </script>
 </html>

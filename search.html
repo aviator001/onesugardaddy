@@ -194,7 +194,9 @@ h1,h2,h3,h4 {
 	var min_age=18
 	var max_age=80
 	var x_miles=3500
-	var x_gender='Sugar Baby'
+	var x_gender
+	if (getCookie('gender')=='Sugar Daddy') x_gender='Sugar Daddy'
+		else x_gender='Sugar Baby'
 	var search_type,searchNameTerm
 	setCookie('x_min',min_age)
 	setCookie('x_max',max_age)
@@ -322,6 +324,7 @@ setTimeout('initAutocomplete()',1000)
 			$$('con_chk_txt_p_p').innerHTML='Show <b>All</b>'
 			x_photos=''
 		}
+		setCookie('x_photos',x_photos)
 		searchLocation()
 	}
 	
@@ -745,9 +748,12 @@ setTimeout('initAutocomplete()',1000)
 			else getProfilesNewLocal_list()
 	}
 	var wait_active=false
-	
+	var cover_on=false
 	
 	function searchLocation() {
+		setCookie('x_min','18')
+		setCookie('x_max','80')
+		setCookie('x_miles','3500')
 		<!-- wait_active=true -->
 		if ($$('xxx').value) {
 			searchNameTerm=$$('xxx').value.toLowerCase()
@@ -803,6 +809,7 @@ setTimeout('initAutocomplete()',1000)
 				$('#xresults').html('')
 				$('#xresults_bar').show()
 				$('#next_a').hide()
+			//	if ($$('f0').style.display=='') $$('f0').style.display='none'
 				if (wait_active===true) {
 					hide()
 					wait_active=false
@@ -826,7 +833,7 @@ setTimeout('initAutocomplete()',1000)
 				} else {
 					for (var i=0;i<data.length;i++) {
 						if (data[i]) {
-								if (data[i].filename_1=='') fnn='images/no_photo.png'
+								if (data[i].filename_1=='') fnn='no_photo_ms.png'
 									else fnn=data[i].filename_1
 								id=data[i].id
 								ids += data[i].id + ','
@@ -841,6 +848,8 @@ setTimeout('initAutocomplete()',1000)
 								imgG.style.left='0'
 								imgG.style.right='0'
 								imgG.style.marginTop='20%'
+								imgG.style.zIndex='9999'
+								imgG.onError=function(){imgG.src='https://onesugardaddy.com/images/no_photo_ms.png'}
 								var cr=''
 								var corner=document.createElement('img')
 								var dpg=document.createElement("div")
@@ -862,15 +871,30 @@ setTimeout('initAutocomplete()',1000)
 									dpg.style.maxWidth=(500/5-5)+'px'
 									dpg.style.height=(500/5-5)+'px'
 								}
+								
+
+								var gi='',sub='',gx=[ ]
+								if (data[i].general_info) {
+									if (data[i].general_info.length > 50) {
+										gi=data[i].general_info.trim().substr(0,50)
+										gx=gi.split(' ')
+										sub=gi.replace(gx[gx.length-2] + ' ' + gx[gx.length-1], '')
+										gi=sub.trim() + ''
+									} else {
+										gi=data[i].general_info
+									}
+								}								
 								dpg.style.padding='0'
 								dpg.style.cursor='pointer'
 								dpg.style.position='relative'
 								cr+='<table style="position:absolute;bottom:50px;max-height:30px;width:100%;margin-bottom:30px;border-radius:0 0 5px 5px;background:none"><tr>'
-								cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:14px;margin-top:-15px">'+data[i].login.substr(0,10).toUpperCase()+' ' + data[i].age + ' ' + (data[i].gender=='sugar baby'?'M':'F')+' <div style="margin:auto;color:maroon"><b>'+data[i].distance+' Miles</b> from<div><span style="background:lightyellow;padding:2px;color:#000;border-radius:5px;border:1px solid silver">' + $('#xxx').val().split(',')[0] + '</span></div></div></td></tr><tr>'
-								cr+='<td style="text-align:center;width:25%;padding:5px;margin-top:-10px"><img onclick="send_mail('+id+')" style="width:20px;margin-bottom:5px" src="img/new_chat.png"></td>'
-								cr+='<td style="text-align:center;width:25%;padding:5px;margin-top:-10px"><img onclick="videoCallx(\''+data[i].login+'\')" style="width:20px;margin-bottom:5px" src="img/new_video_chat.png"></td>'
-								cr+='<td style="text-align:center;width:25%;padding:5px;margin-top:-10px"><img onclick="view_wish('+id+')" style="width:20px;margin-bottom:5px" src="img/new_wish.png"></td>'
-								cr+='</tr></table>'
+								cr+='<tr><td colspan=4 style="text-align:center;width:100%;padding:5px;color:#000;font-size:14px;margin-top:-15px">'+data[i].login.substr(0,10).toUpperCase()+' ' + data[i].age + '<div>' + data[i].gender+'</div><div style="margin:auto;color:maroon"><b>'+data[i].distance+' Miles</b> from<div><span style="background:lightyellow;padding:2px;color:#000;border-radius:5px;border:1px solid silver">' + $('#xxx').val().split(',')[0] + '</span></div></div></td></tr>'
+								cr+='<tr><td style="text-align:center;width:100%;padding:5px;padding-top:10px;font-size:0.8em!Important"><button onclick="videoCall(\''+data[i].login+'\')" class="btn" style="padding:5px;background:orange;width:20%;margin-bottom:-10px"><img style="width:60px" src="images/video_cam_black.png"></button> <button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:75%;margin-bottom:-10px">CONTACT</button></td></tr>'
+								cr+='</table>'
+
+
+
+		
 								cStr.innerHTML=cr
 								dpg.appendChild(imgB)
 								dpg.appendChild(imgG)
@@ -882,7 +906,7 @@ setTimeout('initAutocomplete()',1000)
 					}
 					$$('xresults').innerHTML=xresults_temp.innerHTML
 					
-
+					setTimeout('close_it()',1000)
 
 
 								
@@ -898,6 +922,13 @@ setTimeout('initAutocomplete()',1000)
 		})
 		
 	} 
+	
+	function close_it() {
+		if ($$('fr').style.display=='none')
+			return
+		else
+			$$('fr').style.display='none'
+	}
 					
 	function send_mail(id) {
 		setCookie('chatting_with',id)
