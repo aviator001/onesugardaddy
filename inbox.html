@@ -138,9 +138,10 @@ ul.ui-autocomplete li.ui-menu-item {
 		location.href='profileView.html?id='+xid
 	}
 	
-	function viewMessageDetail(xid,xlogin) {
+	function viewMessageDetail(xid,xlogin,ximg) {
 		setCookie('chatting_with',xid)
 		setCookie('chatting_with_login',xlogin)
+		setCookie('chatting_with_filename',ximg)
 		location.href='viewMessage.html?xid='+xid
 	}
 	
