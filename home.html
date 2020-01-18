@@ -242,7 +242,7 @@
 <div class="container"><div id="ne" class="row"  style="display:none;max-width:800px!Important;width:100%!Important;margin:auto;margin-top:100px"></div></div><img style="height:60px;display:none" src="https://onesugardaddy.com/assets/img/l4.gif">
 
 <span id="main_table"></span>
-<script src="js/jquery.js"></script>
+<script src="https://onesugardaddy.com/js/jquery.js"></script>
 <script src="https://onesugardaddy.com/assets/js/common.js"></script>
 <script src="https://sugardaddylocal.com/js/wait.js"></script>
 <script src="https://onesugardaddy.com/assets/js/events.js"></script>
@@ -419,6 +419,10 @@
 						url='profileBrowse.html?id='+data_id+'&type=new_local&start='+mega_new_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&count='+data_count
 						location.href=url
 					}
+					if (e.target.getAttribute('data-type')=='vp_new_local') {
+						url='profileBrowse.html?id='+e.target.id.split('_')[1]+'&type=new_local&start='+mega_new_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&count='+data_count
+						location.href=url
+					}
 				}
 			}
 			$$('ne').innerHTML=''
@@ -477,22 +481,21 @@
 					if (data[i]) {
 								id=data[i].id
 								ids += data[i].id + ','
-								imgB=document.createElement('img')
-								imgB.src=getfile()  
-								imgB.style='width:100%;height:30%;border-radius:5px 5px 0 0 ;position:absolute;padding:0;margin:0px;top:0'
 								imgG=makeImgM('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
-								imgG.style='height:110px;width:110px!Important;border-radius:60%;position:absolute;padding:0;margin:0px;border:5px solid white'
+								imgG.style='width:'+max_img_width+'px!Important;position:absolute;padding:0;margin:0px;border:0px solid white'
 								imgG.id='img_newest_'+id+'|'+x_start_new_local
 								imgG.style.position='absolute'
 								imgG.style.margin='auto'
-								imgG.style.zIndex='99999'
+								imgG.style.zIndex='99'
 								imgG.style.left='0'
 								imgG.style.right='0'
-								imgG.style.marginTop='20%'
+								imgG.style.borderRadius='5px 5px 0 0'
+								imgG.style.marginTop='0%'
 								imgG.setAttribute('data-id',data[i].id)
 								imgG.setAttribute('data-start',mega_new_local)
 								imgG.setAttribute('data-count',no)
 								imgG.setAttribute('data-type','new_local')
+								var vp=document.createElement('div')
 								var cr=''
 								var corner=document.createElement('img')
 								var dpg=document.createElement("div")
@@ -527,11 +530,13 @@
 								cr+='<tr><td style="text-align:center;width:100%;padding:5px;padding-top:10px;font-size:0.8em!Important"><button onclick="videoCall(\''+data[i].login+'\')" class="btn" style="padding:5px;background:orange;width:20%;margin-bottom:-10px"><img style="width:60px" src="images/video_cam_black.png"></button> <button onclick="send_mail('+id+')" class="btn" style="background:#53DAFF;width:75%;margin-bottom:-10px">CONTACT</button></td>'
 								cr+='</tr></table>'
 								cStr.innerHTML=cr
-								dpg.appendChild(imgB)
 								dpg.appendChild(imgG)
 								dpg.appendChild(corner)
+								dpg.appendChild(vp)
 								dpg.appendChild(cStr)
-								corner.outerHTML='<a onclick="shortlist('+id+')"><img src="images/corner.png" id="corner_'+id+'" style="position: absolute; top: 0px; right: 0px; width: 75px; height: 75px; z-index: 99;"></a>'
+								///vp.outerHTML='<div style="position: absolute; z-index:9999999999999999; top: 0px; left: 0px; width: 100%; height: 40px"></div>'
+								vp.outerHTML='<img data-type="vp_new_local" src="images/view_profile.png" id="vp_'+id+'" style="position: absolute; z-index:9999; bottom: '+(max_img_height/2)+'px; left: 0px; width: 100%; height: 40px">'
+								corner.outerHTML='<a onclick="shortlist('+id+')"><img src="images/corner.png" id="corner_'+id+'" style="position: absolute; z-index:9999; top: 0px; right: 0px; width: 75px; height: 75px"></a>'
 								$$(containerID).appendChild(dpg)
 					}
 				}			
