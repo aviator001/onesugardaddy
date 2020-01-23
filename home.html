@@ -453,7 +453,7 @@
 				hy=hy-100
 				no=20
 				
-				var url = 'https://sugardaddylocal.com/x_browse_new_local.php?start='+mega_new_local+'&count='+no+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new_local'
+				var url = 'https://sugardaddylocal.com/x_browse_new_local.php?start='+mega_new_local+'&count='+no+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new_local&lat='+getCookie('lat')+'&lng='+getCookie('lng')
 				console.log(url)
 				var request = $.ajax({
 					url: url,

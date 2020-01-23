@@ -323,7 +323,6 @@
 <script src='https://onesugardaddy.com/assets/js/countto.js'></script>
 <script src="https://onesugardaddy.com/assets/js/portfolio.js"></script>
 <script src="https://onesugardaddy.com/assets/js/animheader.js"></script>
-<script src="js/scripts.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
@@ -356,12 +355,14 @@
 			type: "GET",
 			dataType: "html",
 			success: function(msg){
+				unload()
 				if (!!msg) {
 					var data=JSON.parse(msg)[0]
 					setCookie('city', data.city)
 					setCookie('state', data.state)
 					setCookie('zip', data.zip)
 					setCookie('location', data.city + ' ' + data.state + ' ' + data.zip)
+					unload()
 				}
 			}
 		})
@@ -381,6 +382,7 @@
 					setCookie('state', data.state)
 					setCookie('zip', data.zip)
 					setCookie('location', data.city + ' ' + data.state + ' ' + data.zip)
+					unload()
 
 				}
 			}
@@ -404,6 +406,8 @@
 					setCookie('state', data.state)
 					setCookie('zip', data.zip)
 					setCookie('location', data.city + ' ' + data.state + ' ' + data.zip)
+					
+					unload()
 				}
 			}
 		})
@@ -534,9 +538,9 @@
 		$('#inmsg').html('')
 		var m = $("#email").val(),
 			p = $("#password").val();
-			console.log("https://sugardaddylocal.com/x_login.php?user_input=" + m + "&pswd=" + p)
+			console.log("https://onesugardaddy.com/x_login.php?user_input=" + m + "&pswd=" + p)
 		$.ajax({
-			url: "https://sugardaddylocal.com/x_login.php?user_input=" + m + "&pswd=" + p + '&w=' + window.screen.width,
+			url: "https://onesugardaddy.com/x_login.php?user_input=" + m + "&pswd=" + p + '&w=' + window.screen.width,
 			dataType: "html",
 			cache: !1,
 			success: function(em) {
@@ -572,6 +576,7 @@
 	}
 	
 	function unload() {
+		$('.page-loader').hide()
 		$('#loader').hide()
 		$('#img_loader').hide()
 	}
@@ -768,7 +773,7 @@
 			}
 		})
 	}
-		
+	unload()	
 	var id
 </script>
 </body>
