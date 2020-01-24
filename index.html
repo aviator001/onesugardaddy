@@ -20,13 +20,7 @@
 		<title>Sugar Daddy Dating App - Live the Good Life</title>
 		<link rel="canonical" href="">
 		<link rel="icon" href="favicon.png">
-		<link href="https://onesugardaddy.com/assets/css/font-awesome.css" rel="stylesheet" >
-		<link href="https://onesugardaddy.com/assets/css/shadows.css" rel="stylesheet" />
-		<link href="https://onesugardaddy.com/assets/css/jquery-ui.css" rel="stylesheet" />
-		<link href="https://onesugardaddy.com/assets/css/bootstrap.css" rel="stylesheet">
 		<link href="https://onesugardaddy.com/assets/css/menu.css" rel="stylesheet">
-		<link href="https://onesugardaddy.com/assets/css/font-awesome.css" rel="stylesheet">
-		<link href="https://onesugardaddy.com/assets/css/animate.css" rel="stylesheet">
 		<link href="css/login.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet"> 
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic|Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -40,7 +34,7 @@
 		}
 </style>
 <script>
-	var version=1.1
+	var version=2.0
 	setCookie('version',version)
 	setTimeout('setVersion()',1000)
 
@@ -159,12 +153,8 @@
 
 	<div id="send_email" onkeyup="deduct()" class="modal_window" style="padding:20px;border-radius:6px;position:;z-index:9999999999999;display:none;background:#f0f0f0;top:100px;left:0;right:0;margin:auto;width:320px;max-width:320px;height:500px;font-family:Ubuntu Condensed;font-size:24px;"><div id="tip" style='color:brown;font-family:Ubuntu Condensed'>SEND ANONYMOUS SMS<br><br><div style="font-size:18px;color:#333;font-family:Ubuntu Condensed">1. Your number will not be revealed<br>2. Message will show as coming from </div></div><br><br><div contentEditable onblur='fill_txt()' onclick='erase_txt()' id='message_text' style='word-wrap:break-word;font-family:Ubuntu Condensed;font-size:24px;contentEditable:true;color:#0093D9;cursor:hand;cursor:pointer;border-radius:4px;border:3px solid lightblue;height:170px;max-height:170px;color:#333;overflow-y:scroll;overflow-x:hidden;color:grey;background:#fff;padding:20px;background:#fff'>Type Message Here</div><div><div style="left:20px;position:">CHARACTERS REMAINING: <b><div id="cr">160</div></b></div></div><br><br><div style='margin-top:10px'><div style="font-size:22px"  class="btn btn-info" onclick='send_sms()' id="send_mail">SEND</div>&nbsp;<div style="font-size:22px"  class="btn btn-danger" onclick="document.all.modal_text.style.display='none'" id="">GO BACK</div></div></div>
 	<div id="send_sms" onkeyup="deduct()" class="modal_window" style="padding:20px;border-radius:6px;position:;z-index:9999999999999;display:none;background:#f0f0f0;top:100px;left:0;right:0;margin:auto;width:320px;max-width:320px;height:500px;font-family:Ubuntu Condensed;font-size:24px;"><div id="tip" style='color:brown;font-family:Ubuntu Condensed'>SEND ANONYMOUS SMS<br><br><div style="font-size:18px;color:#333;font-family:Ubuntu Condensed">1. Your number will not be revealed<br>2. Message will show as coming from </div></div><br><br><div contentEditable onblur='fill_txt()' onclick='erase_txt()' id='message_text' style='word-wrap:break-word;font-family:Ubuntu Condensed;font-size:24px;contentEditable:true;color:#0093D9;cursor:hand;cursor:pointer;border-radius:4px;border:3px solid lightblue;height:170px;max-height:170px;color:#333;overflow-y:scroll;overflow-x:hidden;color:grey;background:#fff;padding:20px;background:#fff'>Type Message Here</div><div><div style="left:20px;position:">CHARACTERS REMAINING: <b><div id="cr">160</div></b></div></div><br><br><div style='margin-top:10px'><div style="font-size:22px"  class="btn btn-info" onclick='send_sms()' id="send_mail">SEND</div>&nbsp;<div style="font-size:22px"  class="btn btn-danger" onclick="img.style.display='block';document.all.cover.style.display='none';document.all.modal_text.style.display='none';document.all.modal.style.display='none'" id="">GO BACK</div></div></div>
-	<section id="modalLogin" class="popupContainer" style="position:;display:none;z-index:999999999999999999999;background:aliceblue;margin:auto;left:0;right:0">
+	<section id="modalLogin" class="popupContainer" style="position:;display:none;z-index:999999999999999999999;background:aliceblue;margin:auto;left:0;right:0;margin-top:20%">
 		<div id="cover" style="display:;position:fixed;width:100%;height:100%;background:#000;opacity:0.7;z-index:;top:0;left:0;bottom:0;right:0"></div>
-		<div class="popupHeader" style="background:#f0f0f0;height:55px!Important;width:100%;font-size:2em">
-			<div class="header_title" style="font-size:24px!Important">Login</div>
-			<div id="close_me" style="right:10px;position:"><img src="https://terrawire.com/images/new_close.png" style="width:15px"></div>
-		</div>
 		<div class="popupHeader">
 			<!-- Social Login -->
 			<div class="social_login">
@@ -256,11 +246,6 @@
 	}
 	</script>
 	<script>
-	function handleOpenURL(url) {
-		var q=url.split('=')[1]
-		location.href='search.html?q='+q
-	}
-
 	function qs(name, url) {
 		if (!url) {
 		  url = window.location.href;
@@ -315,13 +300,6 @@
 </script>
 <script src='cordova.js'></script>
 <script src="https://onesugardaddy.com/assets/js/jquery.js"></script>
-<script src="https://onesugardaddy.com/assets/js/bootstrap.js"></script>
-<script src="https://onesugardaddy.com/assets/js/common.js"></script>
-<script src="https://onesugardaddy.com/assets/js/events.js"></script>
-<script src="https://onesugardaddy.com/assets/js/plugins.js"></script>
-<script src="https://onesugardaddy.com/assets/js/parallax.js"></script>
-<script src='https://onesugardaddy.com/assets/js/countto.js'></script>
-<script src="https://onesugardaddy.com/assets/js/portfolio.js"></script>
 <script src="https://onesugardaddy.com/assets/js/animheader.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
@@ -472,67 +450,7 @@
 		objW.style.display='none'
 		objT.style.display='none'
 	}
-	var wl = window.location.href;
-	var mob = (window.location.href.indexOf('file://')>=0);
 
-	function setCookie(cname,cvalue)	{
-		if (mob===true) {
-			window.localStorage.setItem(cname, cvalue);
-		} else {
-			var d = new Date(); 
-			d.setTime(d.getTime()+(1*24*60*60*1000)); 
-			var expires = "expires="+d.toGMTString(); 
-			document.cookie = cname + "=" + cvalue + "; " + expires; 
-		}
-	} 
-
-	function getCookie(cname)	{ 
-		if (mob===true) {
-			var cvalue = window.localStorage.getItem(cname);
-			return cvalue
-		} else {
-			var name = cname + "="; 
-			var ca = document.cookie.split(';'); 
-			for(var i=0; i<ca.length; i++) { 
-			  var c = ca[i].trim(); 
-			  if (c.indexOf(name)==0) return c.substring(name.length,c.length); 
-			} 
-			return ""; 
-		}
-	} 
-
-	function delCookie(cname) {
-		if (mob===true) {
-			window.localStorage.removeItem(cname);
-		} else {
-			var d = new Date();
-			d.setTime(d.getTime());
-			var expires = "expires="+d.toGMTString();
-			document.cookie = cname + "=" + "" + "; " + expires;
-		}
-	}
-	
-	function clear_all() {
-		if (mob===true) {
-			 window.localStorage.clear();
-		} else {
-			document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-		}	
-	}
-
-	function jwait(objTxt) {
-		objT.innerHTML=objTxt
-		jModalWn.appendChild(objWait)
-		jModalWn.appendChild(objT)
-		jModalWn.style.display='block'
-	} 
-
-	function jhide() {
-		document.getElementById('jModalWn').style.display=='none'
-		jModalWn.style.display='none'
-		objW.style.display='none'
-		objT.style.display='none'
-	}
 	var o
 	function login1() {
 		$('#inmsg').html('')
@@ -632,61 +550,9 @@
 		})
 	}
 
-	function loginFBData(objFB) {
-		var mobile=objFB.mobile
-		var mid=objFB.mid
-		var login=objFB.login
-		var long_code=objFB.long_code
-		var email=objFB.email
-		var gender=objFB.gender
-		setCookie('mobile',mobile)
-		setCookie('mid',mid)
-		setCookie('login',login)
-		setCookie('long_code',long_code)
-		setCookie('email',email)
-		setCookie('gender',gender)
-		location.href='home.html'
-	}
 
-	function saveFBData(objFB) {
-		console.log(js)
-		var age=2019-objFB.age*1
-		var gender=(objFB.sex=='male')?'Sugar Daddy':'Sugar Baby'
-		var login=objFB.email.split('@')[0]
-		var email=objFB.email
-		var fid=objFB.fb_id
-		var name=objFB.name
-		var url='registerComplete.html?name='+name+'&age='+age+'&email='+email+'&gender='+gender+'&uid='+fid+'&login='+login
-		location.href=url
-	}
-		
-
-	function getIP() {
-		$.getJSON("https://jsonip.com/?callback=?", function (data) {
-			setCookie('ip',data.ip);
-		});
-	}
-	
 	function $$(obj) {
 		return document.getElementById(obj)
-	}
-	
-	function fb_step2() {
-		$('#f0')('Thanks! Now - a quick self description/intro/what youre looking for (allowance etc)')
-		$('#f4').hide()
-		$('#f7').show()
-	}	
-	
-	function fb_step3() {
-		$('#f0')('And finally...we need your profile photo!')
-		$('#f7').hide()
-		$('#f8').show()
-	}
-	
-	function finish_fb_registration() {
-		$('#f8').hide()
-		$('#f9').show()
-		$('#f0')('Thank you for registering. Your account is active and you are fully logged In. We sent you an email with account information.<br><br>Click below to proceed to the members home page.')
 	}
 	
 	function go_members_home() {
@@ -697,20 +563,6 @@
 		window.location.href='register.html'	
 	}
 
-	function showRegistration() {
-		location.href='register.html'
-		$('#f1').hide()
-		$('#f2').hide()
-		$('#f3').hide()
-		$('#f5').hide()
-		$('#f6').hide()
-		$('#f7').hide()
-		$('#f8').hide()
-		$('#f9').hide()
-		$('#f10').hide()
-		$$('modalLogin').style.display=''
-		regForm() 
-	}	
 	function login() {
 		$$('modalLogin').style.display=''
 	}
