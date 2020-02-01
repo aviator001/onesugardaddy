@@ -55,14 +55,8 @@
 				text-align:center;
 			}
 			.jconfirm-box, container,jconfirm-box-container{
-				background:pink;
 				text-align:center;
-				width:350px;
-				position:;
-				left:0;
-				right:0;
-				margin:auto;
-				opacity:1;
+				max-width:320px;
 			}
 		</style>
 	<link href='https://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Open Sans' rel='stylesheet' type='text/css'>
@@ -72,7 +66,25 @@
 			font-size:14px!Important;
 			font-weight:300!Important;
 		}
+		ul.ui-autocomplete {
+      width:100%;
+	  position:absolute;
+	  bottom:0;
+	  left:0;
+	  font-size:18px!Important;
+	  font-family:Open Sans
+	 }
+ul.ui-autocomplete li.ui-menu-item {
+      width: 100%;
+      float: left;
+	  background:#fcfcfc;
+	  padding:2px;
+	  font-size:18px!Important;
+	  font-family:Open Sans
+}
 	</style>
+			<link href="https://onesugardaddy.com/assets/css/jquery-ui.css" rel="stylesheet" />
+		<link href="https://onesugardaddy.com/assets/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	</head> 
 	<body style="overflow-y:auto;background:#f0f0f0">
@@ -80,7 +92,7 @@
 		<div id="modal_text" class="modal_window" onclick="javascript:history.go(0)" id="modal_window" style="padding:20px;border-radius:6px;position:;z-index:9999;display:none;background:#f0f0f0;top:0;bottom:0;left:0;right:0;margin:auto;width:300px;height:420px;font-family:Open Sans;font-size:18px;"><b>Error - Location Required</b><br>In order to use this site, you must agree to share your current location. We will never disclose this information to anyone, but we need this to provide you with the best experience. If you need help on how to enable your location, <a href="https://support.google.com/chrome/answer/142065?hl=en"><span style='color:brown'><b>Click Here</b></span></a><br><br><span style='color:#0093D9;cursor:hand;cursor:pointer'>Clear location settings and then click HERE to try again!</span></div>
 		<div class="usersOnline pull-right" id="search_results" style="display:none;position:;top:0;bottom:0px;right:10px;z-index:99999999999;overflow-y:auto;overflow-x:hidden;width:420px;height:100%" onscroll="scrolled(this)"><table border=0></table></div>
 		<div id="dark1" class="dark_a" style="opacity:0;display:none"></div> 
-		<div id="wrapper" class="www_wrapper" style="box-shadow:none!Important;border-radius:5px;margin-top:-50px;margin-bottom:50px;overflow-x:hidden;overflow-y:hidden;width:100%">
+		<div id="" class="www_wrapper" style="box-shadow:none!Important;border-radius:5px;overflow-x:hidden;overflow-y:hidden;width:100%">
 			<section id="section" style="text-align:center;margin:0;padding:0;overflow-y:auto;overflow-x:hidden;height:100%" align=center>
 				<div id="main_content">
 					<div style="position:;width:100%;height:100%;top:0px;left:0px;right:0px;bottom:0px;background:#000;opacity:0.9;z-index:9999100000;display:none" id="pay_modal"></div>	
@@ -131,8 +143,8 @@
 								<div style="width:100%" class="form-group">
 									<div class="col-md-12" style="text-align:left;font-weight:300;font-style:normal;color:#333;text-shadow:none">					
 										<label class="block">Your Location</label>						
-										<input type="text" name="location" id="location" value="" placeholder="Your Location" class="form-control input-box" onclick="clear_error(this)" style="color:grey;font-size:18px">						
-										<div id="location_err_txt" style="color:skyblue;text-align:left"></div>				
+										<input type="text" name="location1" id="location1" value="" placeholder="Your Location" class="form-control input-box" onclick="clear_error(this)" style="color:grey;font-size:18px">						
+										<div id="location1_err_txt" style="color:skyblue;text-align:left"></div>				
 									</div>
 								</div>
 			
@@ -287,7 +299,7 @@
 								</div>
 							</div>	
 							<div class="col-md-6">				
-								<input type="submit" value="FINISH SIGNUP" STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans;position:fixed;bottom:5px;margin:auto;left:0;right:0" class="btn btn-danger push-bottom" data-loading-text="Loading..."  onclick="validate_form()"><br>
+								<button STYLE="font-size:18px;width:150px;height:50px;text-shadow:none;font-family:Open Sans;position:fixed;bottom:5px;margin:auto;left:0;right:0" class="btn btn-danger push-bottom" data-loading-text="Loading..."  onclick="validate_form()">FINISH SIGNUP</button><br>
 							</div>
 						</div>
 
@@ -307,8 +319,9 @@
 			var magic_w='65px'
 			var magic_h='65px'
 		</script>	
-		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script type="text/javascript" src="https://sugardaddylocal.com/js/jquery.js"></script>
+		<script src="https://onesugardaddy.com/assets/js/jquery-ui.js"></script>
+
 		<script type="text/javascript" src="https://lushmatch.com/custom_js/cookie.js"></script>
 		<script type="text/javascript" src="https://lushmatch.com/custom_js/wait.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -386,7 +399,7 @@
 
 
 	//Load all JS libraries
-	['https://onesugardaddy.com/custom_js/geocomplete.js','https://maps.googleapis.com/maps/api/js?key=AIzaSyDAuvU_A1iMThoe1i6Joi26nSTDQkjKlDA&libraries=places'].forEach(function(src) {
+	['https://maps.googleapis.com/maps/api/js?key=AIzaSyDAuvU_A1iMThoe1i6Joi26nSTDQkjKlDA&libraries=places'].forEach(function(src) {
 		script = document.createElement('script');
 		script.src = src;
 		script.async = true;
@@ -403,7 +416,7 @@ var componentForm = {
 
 function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('location')), {
+    (document.getElementById('location1')), {
       types: ['geocode']
     });
   autocomplete.addListener('place_changed', fillInAddress);
@@ -418,7 +431,7 @@ function fillInAddress() {
     var addressType = place.address_components[i].types[0];
     if (componentForm[addressType]) {
       var val = place.address_components[i][componentForm[addressType]];
-      if (addressType=='route') document.getElementById('location').value  = ' ' + val
+      if (addressType=='route') document.getElementById('location1').value  = ' ' + val
       if (addressType=='locality') xt  += ' ' + val
       if (addressType=='administrative_area_level_1') xt  += ' ' + val
       if (addressType=='postal_code') document.getElementById('searchLocation').value  = val
@@ -442,7 +455,7 @@ function geolocate() {
   }
 }
 
-setTimeout('initAutocomplete()',1000)
+setTimeout('initAutocomplete()',3000)
 	function locate() {
 		$.ajax({
 			url: "https://lushmatch.com/x_location.php",
@@ -458,7 +471,7 @@ setTimeout('initAutocomplete()',1000)
 					setCookie('state', data.state)
 					setCookie('zip', data.zip)
 					setCookie('location', data.city + ' ' + data.state + ' ' + data.zip)
-					document.getElementById('location').value=getCookie('location')
+					document.getElementById('location1').value=getCookie('location')
 				}
 			}
 		})
@@ -473,6 +486,25 @@ function ProcessChildMessage_2(message) {
 	setCookie('tags',message)
 }
 
+	
+	function geolocate() {
+		$.ajax({
+			url: 'https://dentistbydemand.com/x_get_address.php?lat='+getCookie('lat')+'&lng='+getCookie('lat'),
+			type: "GET",
+			dataType: "html",
+			success: function(msg){
+				if (!!msg) {
+					var data=JSON.parse(msg)
+					console.log(data)
+					setCookie('city', data.city)
+					setCookie('state', data.state)
+					setCookie('zip', data.zip)
+					setCookie('location', data.city + ' ' + data.state + ' ' + data.zip)
+					
+				}
+			}
+		})
+	}
 	
 	setTimeout("locate()",10)	
 	</script>
