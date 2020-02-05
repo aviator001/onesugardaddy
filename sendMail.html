@@ -98,7 +98,6 @@
 		}
 	} 
 	function gg() {
-		alert()
 	}
 	function delCookie(cname) {
 		if (mob===true) {
@@ -139,7 +138,7 @@
 							qimg='no_photo_m.png'
 						}					
 					}
-				//	document.getElementById('mail_login').textContent=data[0].login.toUpperCase()
+					document.getElementById('mail_login').textContent=data[0].login.toUpperCase()
 					document.getElementById('mail_age').textContent=data[0].age
 					document.getElementById('mail_img').innerHTML="<img src='https://lushmatch.com/sb/"+qimg+"' style='margin:0px;width:125px;height:125px'>"
 					document.getElementById('mail_location').textContent=data[0].location
@@ -660,7 +659,8 @@
 </td></tr></table>
 </div>
 <div id="user_images"></div>
-<div class="row" style="margin-top:10px;width:100%;text-align:center">
+<div id="wo" class="row" style="width:100%;text-align:left"></div>
+<div id="cont" class="row" style="margin-top:10px;width:100%;text-align:center">
 	<!-- <span> -->
 		<!-- <button onclick="send_message()" style="padding-left:10px;padding-right:10px;" class="btn btn-warning" style=""> SEND </button> -->
 	<!-- </span> -->
@@ -708,7 +708,6 @@
 
 <script src="https://lushmatch.com/assets/js/jquery-confirm.min.js"></script>
 <script src="https://lushmatch.com/dz/dropzone.min.js"></script>
-
 <script>
 var mid
 function fs(el) {
@@ -834,10 +833,10 @@ function $$(ox) {
 	function jwait() {
 		$$('img_loader').style.display='block'
 	}
-	
+							
 	var to_u=qs('member_id')
 	function send_message() {
-//		if ($$('mail_pad').value.trim()=='' && !uploads) return false
+		if ($$('mail_pad').value.trim()=='' && !uploads) return false
 		var message=document.getElementById('mail_pad').value
 		message=message.replace(/\&/g,'\&amp;')  
 		message=message.replace(/'/g,"\'")
@@ -845,33 +844,42 @@ function $$(ox) {
 		message=message.replace(/\//g,'\/')
 		
 		var from_u=getCookie('mid')
-		var url = encodeURI('https://onesugardaddy.com/x_send_mail.php?to=' + getCookie('chatting_with') + '&from=' + from_u + '&message=<div>' + message + '</div><div>' + str + '</div>')
+		var url = encodeURI('https://onesugardaddy.com/x_send_mail.php?to=' + getCookie('chatting_with') + '&from=' + from_u + '&message=' + message)
 		console.log(url)
-		//jwait('sending')
+		wait3()
 		var request = $.ajax({
 			url: url, 
 			type: "GET",
 			dataType: "html",
 			cache: false,
 			success: function(msg) {
-				mt(getCookie('chatting_with_login'))
-				location.href='viewMessage.html?xid=' + getCookie('chatting_with')
+				hide()
+				socket.emit('pm', {to:getCookie('chatting_with_login'),from:getCookie('login'),message:message});
+				hf()
 			}
 			
 		})
 	}
 	var objData=[]
-	function mt(to_login) {
-		objData={
-					msg					: 	'<span id="toaster"><img style="height:25px;position:fixed;left:5px;padding-bottom:5px" src="https://gaysugardaddyfinder.com/assets/images/new_video_msg.png"><span style="margin-left:40px;font-family:Open Sans; font-weight:300">NEW VIDEO CALL FROM '+ to_login + '</span><a href="inbox#'+getCookie('mid')+'"><img onclick="START VIEDEO IM" style="cursor:hand;cursor:pointer;height:27px;position:fixed;right:35px;padding-bottom:5px" src="https://gaysugardaddyfinder.com/assets/images/open_email.png"></a><img onclick="closeToaster()" src="https://gaysugardaddyfinder.com/assets/images/close_email.png" style="cursor:hand;cursor:pointer;height:27px;position:fixed;right:5px;padding-bottom:5px"><span>',
-					toUser				: 	to_login,
-					type				: 	'NEW_MAIL',
-					fromUser			: 	getCookie('login'),
-					fromLongCode		: 	getCookie('long_code')
-		}
-		socket.send(JSON.stringify({type:'NEW_MAIL', data: objData}))
+	var usrs=[]
+	function mt(to_login,from_login,message) {
+		socket.emit('pm', {to:to_login,from:from_login,message:message});
 	}
-
+		function render(data,login) {
+			console.clear()
+			console.log(data)
+			str=''
+			for (var i=0;i<data.users.length;i++) {
+				if (!usrs || usrs.indexOf(data.users[i])<0) {
+					usrs.push(data.users[i])
+					if (login==data.users[i]) bg='background:gold'
+						else bg=''
+					str+='<div><button class="btn btn-xs" style="'+bg+';min-width:150px;max-width:150px" onclick="send(\''+data.users[i]+'\')">Message ' + usrs + '</button></div>'
+					bg=''
+				}
+			}
+			//document.getElementById('wo').innerHTML=str
+		}
 	
 	function vc() {
 		videoCall(getCookie('chatting_wwith_login'))

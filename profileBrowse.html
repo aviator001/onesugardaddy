@@ -456,6 +456,8 @@
 			<img id="s5" style="margin:10px;width:25px" src="images/star_off.png">
 		</div>
 	</div>
+	<iframe id="sframe" style="display:none" ></iframe>
+	
 	<script>
 		function $$(obj) {
 			return document.getElementById(obj)
@@ -520,9 +522,12 @@
 	
 	function send_mail(id) {
 		setCookie('chatting_with',id)
-		location.href='sendMail.html?to_member_id='+id
+		var sframe=$$('sframe')
+		sframe.src='sendMail.html?to_member_id='+id
+		sframe.className=''
+		sframe.style.cssText='position:fixed;z-index:9999999999999999;top:0;left:0;border:0;width:100%;height:100%;display:block'
 	}
-	
+		
 	function send_sms() {
 		location.href='sendSMS.php?to_member_id='+qs('id')
 	}
@@ -619,8 +624,6 @@ function getRandomColor(){
 		var str=''
 		if (type=='search') {
 			if (qs('search_type')=='a'){
-			
-				//		https://sugardaddylocal.com/x_browse_search_a.php?lat=33.8622366&lng=-118.3995194&start=0&gender=Sugar Daddy&type=search&count=20&x_miles=3500&min_age=18&max_age=80&photos=undefined
 				var url='https://sugardaddylocal.com/x_browse_search_a.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&gender='+getCookie('x_gender')+'&lat='+qs('lat')+'&lng='+qs('lng')+'&x_miles='+getCookie('x_miles')+'&max_age='+getCookie('x_max')+'&min_age='+getCookie('x_min')
 			} else if (qs('search_type')=='b') {
 				var url='https://onesugardaddy.com/x_browse_search_b.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')

@@ -56,6 +56,13 @@
 	</div>
 	<iframe id="sframe" style="display:none" ></iframe>
 	<script>
+	
+	
+		function hf() {
+			//$$('sframe').className='magictime slideUp'
+		}
+
+	
 		function upload_photos() {
 			if(!getCookie('mid')) location.href='index?force=login'
 				else location.href='uploadPhotos.html?member_id='+getCookie('mid')
@@ -256,6 +263,8 @@
 	.genActive{background: gold;border:none;opacity:1!Important}
 </style>
  		<script>
+
+					
 			wait3()
 			var currPage='home'
 			if (getCookie('currPage')) {
@@ -483,7 +492,7 @@
 								id=data[i].id
 								ids += data[i].id + ','
 								imgG=makeImgM('https://lushmatch.com/sb/'+data[i].filename_1, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, data[i].gender + ' ' + data[i].login + ' in ' + data[i].location, 'col-md-3')
-								imgG.style='width:'+max_img_width+'px!Important;position:absolute;padding:0;margin:0px;border:0px solid white'
+								imgG.style.cssText='min-height:'+(max_img_height/2)+'px;width:'+max_img_width+'px!Important;position:absolute;padding:0;margin:0px;border:0px solid white'
 								imgG.id='img_newest_'+id+'|'+x_start_new_local
 								imgG.style.position='absolute'
 								imgG.style.margin='auto'
@@ -1154,13 +1163,12 @@
 				   },100)
 			   }
 			});
-	function kill_sframe(){
-		$$('sframe').style.display='none'
-	}
+
 	function send_mail(id) {
 		setCookie('chatting_with',id)
 		var sframe=$$('sframe')
 		sframe.src='sendMail.html?to_member_id='+id
+		sframe.className=''
 		sframe.style.cssText='position:fixed;z-index:9999999999999999;top:0;left:0;border:0;width:100%;height:100%;display:block'
 	}
 	
