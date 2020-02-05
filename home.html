@@ -495,7 +495,7 @@
 								imgG.setAttribute('data-start',mega_new_local)
 								imgG.setAttribute('data-count',no)
 								imgG.setAttribute('data-type','new_local')
-								var vp=document.createElement('div')
+								var vp=document.createElement('img')
 								var cr=''
 								var corner=document.createElement('img')
 								var dpg=document.createElement("div")
@@ -534,8 +534,13 @@
 								dpg.appendChild(corner)
 								dpg.appendChild(vp)
 								dpg.appendChild(cStr)
-								///vp.outerHTML='<div style="position: absolute; z-index:9999999999999999; top: 0px; left: 0px; width: 100%; height: 40px"></div>'
-								vp.outerHTML='<img data-type="vp_new_local" src="images/view_profile.png" id="vp_'+id+'" style="position: absolute; z-index:9999; bottom: '+(max_img_height/2)+'px; left: 0px; width: 100%; height: 40px">'
+								vp.src="images/view_profile.png"
+								vp.id='vp_'+id
+								vp.style.cssText='position: absolute; z-index:99999999; bottom: '+(max_img_height/2)+'px; left: 0px; width: 100%; height: 40px'
+								vp.setAttribute('data-id',data[i].id)
+								vp.setAttribute('data-start',mega_new_local)
+								vp.setAttribute('data-count',no)
+								vp.setAttribute('data-type','new_local')
 								corner.outerHTML='<a onclick="shortlist('+id+')"><img src="images/corner.png" id="corner_'+id+'" style="position: absolute; z-index:9999; top: 0px; right: 0px; width: 75px; height: 75px"></a>'
 								$$(containerID).appendChild(dpg)
 					}
