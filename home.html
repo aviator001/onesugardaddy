@@ -54,6 +54,7 @@
 	<div id="notify" style="display:none;opacity:0.8;right:10px;top:100px;z-index:99999999999999;background:#333;box-shadow:0 0 20px #000;width:250px;height:40px;position:fixed;border-radius:4px">
 		<span id="notify_txt"  style="padding:5px;color:#f0f0f0"></span>
 	</div>
+	<iframe id="sframe" style="display:none" ></iframe>
 	<script>
 		function upload_photos() {
 			if(!getCookie('mid')) location.href='index?force=login'
@@ -1153,10 +1154,14 @@
 				   },100)
 			   }
 			});
-	
+	function kill_sframe(){
+		$$('sframe').style.display='none'
+	}
 	function send_mail(id) {
 		setCookie('chatting_with',id)
-		location.href='sendMail.html?to_member_id='+id
+		var sframe=$$('sframe')
+		sframe.src='sendMail.html?to_member_id='+id
+		sframe.style.cssText='position:fixed;z-index:9999999999999999;top:0;left:0;border:0;width:100%;height:100%;display:block'
 	}
 	
 	function send_sms() {

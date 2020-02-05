@@ -778,20 +778,21 @@ function getRandomColor(){
 							if (data[i].allowance_sb)	str+=	'						<div style="font-size:12px!Important;padding-left:30px;padding-right:30px">Seeking Allowance: '+data[i].allowance_sb+'</div>'
 							str+=	'						<div style="max-height:200px;height:150px;font-size:12px!Important;padding-left:30px;padding-right:30px">'+general_info+'</div>'
 							str+=   '					</div>'
-							str+=	'						<table style="width:100%;text-align:center;margin:auto;width:100%;position:fixed;bottom:45px;z-index:99999999999">'
-							str+=	'							<tr><td><a href="javascript:dislike(\'p'+data[i].id+'\')"><img src="images/nav9.png" style="width:70px;margin-bottom:2px"></a><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a href="javascript:like(\'p'+data[i].id+'\')"><img src="images/nav4.png" style="width:70px;margin-bottom:2px"></a></td></tr><tr style="height:10px"><td colspan=4></td></tr>'
+							str+=	'							<table style="width:100%;text-align:center;margin:auto;width:100%;position:fixed;bottom:45px;z-index:99999999999">'
+							str+=	'								<tr><td></td></tr><tr style="height:10px"><td colspan=4></td></tr>'
 							str+=	'								<tr style="display:none"><td style="width:15%;text-align:center"><a href="javascript:wishlist('+data[i].id+')" style="text-decoration:none"><img src="images/new_wish.png" style="width:25px"></a></td>'
 							str+=	'									<td style="width:15%;text-align:center"><a href="javascript:coming_soon()"><img src="images/offer.png" style="width:25px;opacity:1"></a></td>'
 							str+=	'									<td style="width:15%;text-align:center"><a href="javascript:coming_soon()"><img src="images/rewards.png" style="width:20px;opacity:2"></a></td>'
 							str+=	'									<td style="width:15%;text-align:center"><a href="javascript:coming_soon()"><img src="images/people.png" style="opacity:2;width:25px"></a></td>'
 							str+=	'								</tr>'
+							str+=	'								<tr><td></td></tr><tr style="height:10px"><td colspan=4><button class="btn" onclick="history.go(-1)">Go Back</button></td></tr>'
 							str+=	'								<tr style="display:none">'
 							str+=	'									<td style="width:15%;text-align:center;vertical-align:top"><a href="javascript:wishlist('+data[i].id+')" style="text-decoration:none;font-size:10px;color:orange"><b>WISHLIST</b></a></td>'
 							str+=	'									<td style="width:15%;text-align:center;font-size:10px;opacity:1"><a href="javascript:coming_soon()"><b style="color:grey">OFFERS</b></a></td>'
 							str+=	'									<td style="width:15%;text-align:center;font-size:10px;opacity:1"><a href="member_rewards.html"><b style="color:orange">REWARDS</b></a></td>'
 							str+=	'									<td style="width:15%;text-align:center;font-size:10px;opacity:1"><a href="javascript:coming_soon()"><b style="color:grey">REVIEWS</b></a></td>'
-							str+=	'							</tr>'
-							str+=	'						</table>'
+							str+=	'								</tr>'
+							str+=	'							</table>'
 							str+=	'					</div>'
 							str+=	'				</div>'
 							str+=	'			</div>'
@@ -1211,14 +1212,7 @@ function detectswipe(el,func) {
     function myfunction(el,d) {
 	console.log(el)
 	console.log(d)
-		if(xtt=='touchmove') {
-			if (d=='l') setTimeout('dislike('+el+')',10)
-			if (d=='r') setTimeout('like('+el+')',10)
-			if (d=='u') setTimeout('like('+el+')',10)
-			if (d=='d') setTimeout('dislike('+el+')',10)
-		 } else {
-			return false
-		 }
+	return false
     }
 	
 
