@@ -422,19 +422,22 @@
 					var data_count=e.target.getAttribute('data-count')
 
 					if (e.target.id.indexOf('img_local_')>-1) {
-						location.href='profileBrowse.html?id='+data_id+'&type=local&start='+x_start_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=local'
+						url='profileBrowse.html?id='+data_id+'&type=local&start='+x_start_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=local'
+						x_start_local=x_start_local+no
 					}
 					if (e.target.id.indexOf('img_latest_')>-1) {
-						location.href='profileBrowse.html?id='+data_id+'&type=new&start='+x_start_new+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new'
+						url='profileBrowse.html?id='+data_id+'&type=new&start='+x_start_new+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&type=new'
+						x_start_new=x_start_new+no
 					}
 					if (e.target.getAttribute('data-type')=='new_local') {
 						url='profileBrowse.html?id='+data_id+'&type=new_local&start='+mega_new_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&count='+data_count
-						location.href=url
+						mega_new_local=mega_new_local+no
 					}
 					if (e.target.getAttribute('data-type')=='vp_new_local') {
 						url='profileBrowse.html?id='+e.target.id.split('_')[1]+'&type=new_local&start='+mega_new_local+'&gender='+x_gender+'&max_age='+max_age+'&min_age='+min_age+'&photos='+x_photos+'&zip='+x_zip+'&miles='+x_miles+'&count='+data_count
-						location.href=url
+						mega_new_local=mega_new_local+no
 					}
+					location.href=url
 				}
 			}
 			$$('ne').innerHTML=''
@@ -475,7 +478,6 @@
 					success: function(msg) {
 						var data=JSON.parse(msg)
 						render(data,'ne')
-						mega_new_local=mega_new_local+no
 						setTimeout('update_shortlist()',10)
 						setTimeout('update_browse_new_local_logs()',10)
 					}
