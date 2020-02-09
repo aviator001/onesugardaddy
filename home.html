@@ -349,8 +349,10 @@
 				x_miles=getCookie('x_miles')
 				max_age=getCookie('x_max_age')
 				min_age=getCookie('x_min_age')
-
-				
+				if (x_miles==null) {
+					x_miles=3500
+					setCookie('x_miles',3500)
+				}
 				if (qs('view')) { 
 					if (qs('view')=='list') {
 						$$('img_list').src='images/list_selected.png'
