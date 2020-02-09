@@ -570,6 +570,7 @@
 	var x_start=0,saved=''
 	var miles=getCookie('x_miles')
 	if (!miles) miles=100
+	if (!start_new_local) start_new_local=0
 	function showSearchHeader() {
 		$$('ttl').style.background='aliceblue'
 		$$('ttl').style.opacity='1'
@@ -630,7 +631,6 @@ function getRandomColor(){
 			} else if (qs('search_type')=='c') {
 				var url='https://onesugardaddy.com/x_browse_search_c.php?mid='+qs('id')+'&start='+start_search+'&count='+no_search+'&search_term='+qs('search_term')+'&gender='+getCookie('gender')+'&lat='+qs('lat')+'&lng='+qs('lng')
 			}
-				console.log(url)
 				
 		} else {
 			if (qs('type')=='local') {
@@ -642,7 +642,7 @@ function getRandomColor(){
 			}
 		}
 		var imt,br,bkg='background: #fff',yes_pd=0
-		console.log(url)
+				alert(url)
 			var mw=window_width()+'px'
 			var mh=mw
 			var pt='0px'
